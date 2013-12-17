@@ -31,6 +31,11 @@ public class Tuote {
         this.hinta = hinta;
     }
     
+    @Override
+    public String toString() {
+        return this.nimi + ", " + this.hinta;
+    }
+    
     
     
 }

@@ -29,6 +29,10 @@ public class Lista {
         return tuoteLista;
     }
     
+        public HashMap<Tuote, Integer> getMaaranTietavaLista() {
+        return maaranTietavaLista;
+    }
+    
     
     
 }

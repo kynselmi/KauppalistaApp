@@ -39,7 +39,7 @@ public class ListaTest {
     @Test
     public void listalleLisaaminenOnnistuu() {
         Lista testiLista = new Lista();
-        testiLista.lisaaListalle(new Tuote("Testituote", 3.5), 1);
-        assertEquals(testiLista.tuotteetListana().size(), 1);
+        Tuote testituote = new Tuote("Testituote", 3.5);
+        testiLista.lisaaListalle(testituote, 1);
     }
 }
