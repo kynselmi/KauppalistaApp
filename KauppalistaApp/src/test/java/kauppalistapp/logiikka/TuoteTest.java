@@ -27,6 +27,18 @@ public class TuoteTest {
     
     @After
     public void tearDown() {
-    }    
+    }
+
+    @Test
+    public void toStringToimiiOikeinIlmanHintaa() {
+        Tuote maito = new Tuote("Maito");
+        assertEquals("Maito", maito.toString());
+    }
+    
+    @Test
+    public void toStringToimiiOikeinHinnanKanssa() {
+        Tuote maito = new Tuote("Maito", 2);
+        assertEquals("Maito, 2.0e", maito.toString());
+    }
     
 }

@@ -1,20 +1,18 @@
-
 package kauppalistapp.logiikka;
 
 public class Tuote {
-    
+
     private String nimi;
     private double hinta;
-    
-    public Tuote (String nimi) {
-        this.nimi = nimi;        
+
+    public Tuote(String nimi) {
+        this.nimi = nimi;
     }
-    
-    public Tuote (String nimi, double hinta) {
+
+    public Tuote(String nimi, double hinta) {
         this.nimi = nimi;
         this.hinta = hinta;
     }
-    
 
     public String getNimi() {
         return nimi;
@@ -31,12 +29,13 @@ public class Tuote {
     public void setHinta(double hinta) {
         this.hinta = hinta;
     }
-    
+
     @Override
     public String toString() {
-        return this.nimi + ", " + this.hinta + "e";
+        if (this.hinta == 0.0) {
+            return this.nimi;
+        } else {
+            return this.nimi + ", " + this.hinta + "e";
+        }
     }
-    
-    
-    
 }

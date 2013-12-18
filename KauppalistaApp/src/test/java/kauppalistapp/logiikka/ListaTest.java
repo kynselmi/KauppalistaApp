@@ -16,30 +16,44 @@ import static org.junit.Assert.*;
  * @author aleksika
  */
 public class ListaTest {
-    
+
+    private Lista testiLista;
+
     public ListaTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
+        this.testiLista = new Lista();
     }
-    
+
     @After
     public void tearDown() {
     }
 
     @Test
     public void listalleLisaaminenOnnistuu() {
-        Lista testiLista = new Lista();
-        Tuote testituote = new Tuote("Testituote", 3.5);
-        testiLista.lisaaListalle(testituote, 1);
+        Tuote testituote = new Tuote("Testituote");
+        this.testiLista.lisaaListalle(testituote, 2);
+        int maara = testiLista.getMaaranTietavaLista().get(testituote);
+        assertEquals(maara, 2);
     }
+
+    @Test
+    public void listalleLisataanOikeinKunTuoteOnJoListalla() {
+        Tuote testituote = new Tuote("Testituote");
+        this.testiLista.lisaaListalle(testituote, 2);
+        this.testiLista.lisaaListalle(testituote, 3);
+        int maara = testiLista.getMaaranTietavaLista().get(testituote);
+        assertEquals(maara, 5);
+    }
+ 
 }

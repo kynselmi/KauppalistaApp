@@ -16,7 +16,7 @@ public class TiedostoonKirjoittaja {
         }
     }
     
-    public void tallennaLista(List<Tuote> tuotelista) {
+    public void kirjoitaTuoteListastaListMuodossa(List<Tuote> tuotelista) {
         for (Tuote listalla : tuotelista) {
             try {
                 this.kirjoittaja.write(listalla.toString() + "\n");
