@@ -1,0 +1,3 @@
+Kala, 10.0e
+Maito, 1.0e
+Mehu, 2.0e

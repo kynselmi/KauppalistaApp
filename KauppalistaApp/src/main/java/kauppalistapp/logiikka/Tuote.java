@@ -14,6 +14,7 @@ public class Tuote {
         this.nimi = nimi;
         this.hinta = hinta;
     }
+    
 
     public String getNimi() {
         return nimi;
@@ -33,7 +34,7 @@ public class Tuote {
     
     @Override
     public String toString() {
-        return this.nimi + ", " + this.hinta;
+        return this.nimi + ", " + this.hinta + "e";
     }
     
     
