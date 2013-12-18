@@ -31,4 +31,5 @@ public class Lista {
     public HashMap<Tuote, Integer> getMaaranTietavaLista() {
         return maaranTietavaLista;
     }
+    
 }
