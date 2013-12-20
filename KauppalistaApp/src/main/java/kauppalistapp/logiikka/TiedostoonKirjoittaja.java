@@ -20,7 +20,7 @@ public class TiedostoonKirjoittaja {
         }
     }
 
-    public void kirjoitaTuoteListastaList(List<Tuote> tuotelista) {
+    public void kirjoitaTuotelistastaList(List<Tuote> tuotelista) {
         for (Tuote listalla : tuotelista) {
             try {
                 this.kirjoittaja.write(listalla.toString() + "\n");

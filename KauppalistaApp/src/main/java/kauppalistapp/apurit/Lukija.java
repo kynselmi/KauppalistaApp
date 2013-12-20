@@ -1,4 +1,4 @@
-package kauppalistapp.logiikka;
+package kauppalistapp.apurit;
 
 import java.util.Scanner;
 
@@ -15,6 +15,12 @@ public class Lukija {
         return teksti;
     }
 
+    public String lueTeksti(String tekstia) {
+        System.out.println(tekstia);
+        String teksti = this.lukija.nextLine();
+        return teksti;
+    }
+
     public int lueInteger() {
         int nro = -150;
         try {
@@ -24,5 +30,14 @@ public class Lukija {
 
         }
         return nro;
+    }
+
+    public double lueLiukuluku() {
+        return lukija.nextDouble();
+    }
+
+    public double lueLiukuluku(String tekstia) {
+        System.out.println(tekstia);
+        return lukija.nextDouble();
     }
 }

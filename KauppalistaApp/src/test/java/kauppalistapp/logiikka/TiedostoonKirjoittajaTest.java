@@ -8,7 +8,6 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import java.util.List;
 import java.util.ArrayList;
-import kauppalistapp.logiikka.Tuote;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -48,7 +47,7 @@ public class TiedostoonKirjoittajaTest {
         this.lukija = new Scanner(this.listatiedosto);
         this.lista = new ArrayList<Tuote>();
         lista.add(new Tuote("Maito"));
-        this.tk.kirjoitaTuoteListastaList(lista);
+        this.tk.kirjoitaTuotelistastaList(lista);
         assertEquals(this.lukija.nextLine(), "Maito");
     }
 
@@ -69,7 +68,7 @@ public class TiedostoonKirjoittajaTest {
         this.lista = new ArrayList<Tuote>();
         this.lista.add(new Tuote("Maito"));
         this.lista.add(new Tuote("Leipä",2));
-        this.tk.kirjoitaTuoteListastaList(lista);
+        this.tk.kirjoitaTuotelistastaList(lista);
         this.lukija = new Scanner(this.listatiedosto);
         assertEquals(this.lukija.nextLine(), "Maito");
         assertEquals(this.lukija.nextLine(), "Leipä, 2.0e");

@@ -4,6 +4,7 @@
  */
 package kauppalistapp.logiikka;
 
+import kauppalistapp.apurit.Lukija;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -38,14 +39,5 @@ public class LukijaTest {
 
     @After
     public void tearDown() {
-    }
-
-    @Test
-    public void lukeeString() {        
-        String syote = "Pekka";
-        System.setIn(new java.io.ByteArrayInputStream(syote.getBytes()));
-        String testi = this.lukija.lueTeksti();
-        assertEquals(testi, "Pekka");
-        
     }
 }

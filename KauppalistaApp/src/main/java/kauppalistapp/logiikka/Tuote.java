@@ -9,7 +9,7 @@ public class Tuote {
         this.nimi = nimi;
     }
 
-    public Tuote(String nimi, double hinta) {
+    public Tuote(String nimi, double hinta) {  
         this.nimi = nimi;
         this.hinta = hinta;
     }
