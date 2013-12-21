@@ -27,7 +27,7 @@ public class Sovellus {
             System.out.println("Komennot:");
             System.out.println("");
             tulostaKomennot();
-            System.out.print("Anna komento (1-4): ");           
+            System.out.print("Anna komento (1-5): ");           
             int komento = this.lukija.lueInteger();
             System.out.println("");
             jatkuu = this.komennot.get(komento).suorita();            
@@ -40,10 +40,12 @@ public class Sovellus {
         this.komennot.put(2, new LisaaTuote(2, "Lisaa tuote", this.lukija));
         this.komennot.put(3, new PoistaTuote(3, "Poista tuote", this.lukija));
         this.komennot.put(4, new JarjestaTuotteita(4, "Jarjesta tuotteita", this.lukija));
+        this.komennot.put(5, new EtsiTuote(5, "Etsi tuote", this.lukija));
+        this.komennot.put(6, new LisaaListalle(6, "Lisaa listalle", this.lukija));
     }
 
     public void tulostaKomennot() {
-        for (int i = 1; i <= 4; i++) {
+        for (int i = 1; i <= 5; i++) {
             System.out.println(this.komennot.get(i));
         }
         System.out.println("¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨");
