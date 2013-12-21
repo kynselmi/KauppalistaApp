@@ -17,32 +17,35 @@ public class TiedostonKirjoittaja {
     }
 
     public void kirjoitaTiedostoon(List<String> lista, String tiedostonNimi) {
-        int jarjestysluku = 1;
-        try {
-            jarjestysluku = this.tiedostonlukija.riveja(tiedostonNimi) + 1;
-        } catch (Exception ex) {
-        }
+        //try {
+        //    jarjestysluku = this.tiedostonlukija.riveja(tiedostonNimi) + 1;
+        //} catch (Exception ex) {
+        //}
 
         ArrayList<String> kirjoitettavatRivit = new ArrayList<String>();
 
         if (this.tiedostonlukija.onkoSisaltoa(tiedostonNimi)) {
-            int i = 0;
-            for (String vanhaTieto : this.tiedostonlukija.lueJaAnnaListana(tiedostonNimi)) {
-                i++;
-                kirjoitettavatRivit.add(vanhaTieto.split("" + i)[1] + "\n");                
+            List<String> vanhaLista = this.tiedostonlukija.lueJaAnnaListana(tiedostonNimi);
+            for (String vanhaTieto : vanhaLista) {
+                try {
+                    kirjoitettavatRivit.add(vanhaTieto.split("-")[1].trim());
+                } catch (Exception ex) {
+                }
             }
         }
+        ;
         for (String uusiTieto : lista) {
-            kirjoitettavatRivit.add(jarjestysluku + " " + uusiTieto);
-            jarjestysluku++;
+            kirjoitettavatRivit.add(uusiTieto);
         }
         try {
             this.kirjoittaja = new FileWriter(tiedostonNimi);
         } catch (Exception poikkeus) {
         }
+        int riviNumero = 1;
         for (String kirjoitettava : kirjoitettavatRivit) {
             try {
-                this.kirjoittaja.write(kirjoitettava + "\n");
+                this.kirjoittaja.write(riviNumero + " - " + kirjoitettava + "\n");
+                riviNumero++;
             } catch (Exception ex) {
             }
         }
@@ -51,6 +54,7 @@ public class TiedostonKirjoittaja {
         } catch (Exception ex) {
         }
     }
+
 
     public void tyhjennaTiedosto(String tiedostonNimi) {
         try {

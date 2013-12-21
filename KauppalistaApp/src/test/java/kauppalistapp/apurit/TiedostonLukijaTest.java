@@ -67,4 +67,22 @@ public class TiedostonLukijaTest {
     public void eiKaaduJoseiLoydyTiedostoaOnkoSisaltoa() {
         this.tl.onkoSisaltoa("tatatiedostoaeiole.txt");
     }
+    
+    @Test
+    public void antaaOikeanRivimaaranYksi() {
+        assertEquals(this.tl.riveja("yhdenRivinLuettava.txt"), 1);
+    }
+    
+    @Test
+    public void antaaOikeanRivimaaranUseampi() {
+        assertEquals(this.tl.riveja("useammanRivinLuettava.txt"), 2);
+    }
+    
+    @Test
+    public void antaaTrimmatunListan() {
+        List<String> trimmattuLista =  this.tl.annaListanaIlmanRiviNumeroa("TuotelistaTestaus.txt");
+        assertEquals(trimmattuLista.get(0), "Maito");
+        assertEquals(trimmattuLista.get(1), "Leipa");
+        assertEquals(trimmattuLista.get(2), "Liha");
+    }
 }

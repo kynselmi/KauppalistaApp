@@ -23,6 +23,7 @@ public class TulostaTuotteet extends Komento {
     }
     
     public void tulostus(List<String> lista) {
+        System.out.println("Tuotteet:");
         for (String tuote : lista) {
             System.out.println(tuote);
         }

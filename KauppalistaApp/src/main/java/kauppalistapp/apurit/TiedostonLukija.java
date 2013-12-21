@@ -23,7 +23,7 @@ public class TiedostonLukija {
         try {
             Scanner lukija = new Scanner(new File(tiedosto));
 
-            while (lukija.hasNext()) {
+            while (lukija.hasNextLine()) {
                 lista.add(lukija.nextLine());
             }
         } catch (Exception ex) {
@@ -46,5 +46,13 @@ public class TiedostonLukija {
         }
 
         return riveja;
+    }
+    
+    public List<String> annaListanaIlmanRiviNumeroa(String tiedostonNimi) {
+        List<String> trimmattuLista = new ArrayList<String>();
+        for (String trimmattava : this.lueJaAnnaListana(tiedostonNimi)) {
+            trimmattuLista.add(trimmattava.split("-")[1].trim());
+        }
+        return trimmattuLista;
     }
 }

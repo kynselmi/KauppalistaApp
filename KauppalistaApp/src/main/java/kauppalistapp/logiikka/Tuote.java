@@ -20,10 +20,6 @@ public class Tuote {
         return nimi;
     }
 
-    public double getHinta() {
-        return eurot;
-    }
-
     public void setNimi(String nimi) {
         this.nimi = nimi;
     }
@@ -35,10 +31,14 @@ public class Tuote {
 
     @Override
     public String toString() {
-        if (this.eurot == 0.0) {
+        String sentitTekstina = "" + this.sentit;
+        if (this.sentit < 10) {
+            sentitTekstina = "0"+this.sentit;
+        }        
+        if (this.eurot == 0 && this.sentit == 0) {
             return this.nimi;
         } else {
-            return this.nimi + ", " + this.eurot + "," + this.sentit + "e";
+            return this.nimi + ", " + this.eurot + "," + sentitTekstina + "e";
         }
     }
 }

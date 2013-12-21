@@ -12,7 +12,6 @@ public class LisaaTuote extends Komento {
 
     @Override
     public boolean suorita() {
-        boolean lisataan = true;
         TiedostonLukija tl = new TiedostonLukija();
         int rivinumero = tl.riveja("Tuotteet.txt");
         ArrayList<String> lista;
@@ -32,7 +31,7 @@ public class LisaaTuote extends Komento {
             }
 
             lista = new ArrayList<String>();
-            lista.add(rivinumero + " " + tuote.toString());
+            lista.add(tuote.toString());
             TiedostonKirjoittaja tk = new TiedostonKirjoittaja();
             tk.kirjoitaTiedostoon(lista, "Tuotteet.txt");
             rivinumero++;

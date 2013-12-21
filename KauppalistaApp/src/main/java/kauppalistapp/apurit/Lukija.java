@@ -33,7 +33,7 @@ public class Lukija {
     }
     
         public int lueInteger(String teksti) {
-        int nro = -150;
+        int nro = 0;
         System.out.print(teksti);
         try {
             nro = Integer.parseInt(this.lukija.nextLine());
