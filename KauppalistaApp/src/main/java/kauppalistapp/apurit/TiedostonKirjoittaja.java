@@ -26,8 +26,10 @@ public class TiedostonKirjoittaja {
         ArrayList<String> kirjoitettavatRivit = new ArrayList<String>();
 
         if (this.tiedostonlukija.onkoSisaltoa(tiedostonNimi)) {
+            int i = 0;
             for (String vanhaTieto : this.tiedostonlukija.lueJaAnnaListana(tiedostonNimi)) {
-                kirjoitettavatRivit.add(vanhaTieto);
+                i++;
+                kirjoitettavatRivit.add(vanhaTieto.split("" + i)[1] + "\n");                
             }
         }
         for (String uusiTieto : lista) {

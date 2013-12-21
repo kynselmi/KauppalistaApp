@@ -1,8 +1,7 @@
 package kauppalistapp.komennot;
 
 import kauppalistapp.logiikka.*;
-import kauppalistapp.apurit.Lukija;
-import kauppalistapp.apurit.TiedostonKirjoittaja;
+import kauppalistapp.apurit.*;
 import java.util.ArrayList;
 
 public class LisaaTuote extends Komento {
@@ -14,6 +13,9 @@ public class LisaaTuote extends Komento {
     @Override
     public boolean suorita() {
         boolean lisataan = true;
+        TiedostonLukija tl = new TiedostonLukija();
+        int rivinumero = tl.riveja("Tuotteet.txt");
+        ArrayList<String> lista;
         while (true) {
             Tuote tuote;
             System.out.println("Voit syottaa tuotteita niin kauan kuin haluat. Syota nimeksi 'x' jos haluat lopettaa.");
@@ -28,12 +30,14 @@ public class LisaaTuote extends Komento {
             } else {
                 tuote = new Tuote(nimi, eurot, sentit);
             }
+
+            lista = new ArrayList<String>();
+            lista.add(rivinumero + " " + tuote.toString());
             TiedostonKirjoittaja tk = new TiedostonKirjoittaja();
-            ArrayList<String> lista = new ArrayList<String>();
-            lista.add(tuote.toString());
             tk.kirjoitaTiedostoon(lista, "Tuotteet.txt");
-            
+            rivinumero++;
         }
+
         return true;
 
 
