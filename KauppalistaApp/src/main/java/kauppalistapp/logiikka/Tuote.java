@@ -3,15 +3,17 @@ package kauppalistapp.logiikka;
 public class Tuote {
 
     private String nimi;
-    private double hinta;
+    private int eurot;
+    private int sentit;
 
     public Tuote(String nimi) {
         this.nimi = nimi;
     }
 
-    public Tuote(String nimi, double hinta) {  
+    public Tuote(String nimi, int eurot, int sentit) {  
         this.nimi = nimi;
-        this.hinta = hinta;
+        this.eurot = eurot;
+        this.sentit = sentit;
     }
 
     public String getNimi() {
@@ -19,23 +21,24 @@ public class Tuote {
     }
 
     public double getHinta() {
-        return hinta;
+        return eurot;
     }
 
     public void setNimi(String nimi) {
         this.nimi = nimi;
     }
 
-    public void setHinta(double hinta) {
-        this.hinta = hinta;
+    public void setHinta(int eurot, int sentit) {
+        this.eurot = eurot;
+        this.sentit = sentit;
     }
 
     @Override
     public String toString() {
-        if (this.hinta == 0.0) {
+        if (this.eurot == 0.0) {
             return this.nimi;
         } else {
-            return this.nimi + ", " + this.hinta + "e";
+            return this.nimi + ", " + this.eurot + "," + this.sentit + "e";
         }
     }
 }

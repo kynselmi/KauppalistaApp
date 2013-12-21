@@ -1,0 +1,4 @@
+1 Maito, 2,50e
+2 Maito, 2,50e
+3 Peruna, 1,50e
+4 Chili, 1,35e

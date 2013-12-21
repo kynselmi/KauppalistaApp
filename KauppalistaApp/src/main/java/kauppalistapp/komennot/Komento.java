@@ -14,6 +14,11 @@ public abstract class Komento {
         this.lukija = lukija;
     }
     
+    @Override
+    public String toString() {
+        return this.numero + " " + this.nimi;
+    }
+    
 
     public abstract boolean suorita();
         

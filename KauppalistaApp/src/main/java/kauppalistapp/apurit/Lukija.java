@@ -16,7 +16,7 @@ public class Lukija {
     }
 
     public String lueTeksti(String tekstia) {
-        System.out.println(tekstia);
+        System.out.print(tekstia);
         String teksti = this.lukija.nextLine();
         return teksti;
     }
@@ -31,13 +31,25 @@ public class Lukija {
         }
         return nro;
     }
+    
+        public int lueInteger(String teksti) {
+        int nro = -150;
+        System.out.print(teksti);
+        try {
+            nro = Integer.parseInt(this.lukija.nextLine());
+        } catch (Exception Ex) {
+            System.out.println("Syötteesi ei ole kokonaisluku");
+
+        }
+        return nro;
+    }
 
     public double lueLiukuluku() {
-        return lukija.nextDouble();
+        return this.lukija.nextDouble();
     }
 
     public double lueLiukuluku(String tekstia) {
-        System.out.println(tekstia);
-        return lukija.nextDouble();
+        return 0;
+        
     }
 }

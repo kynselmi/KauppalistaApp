@@ -1,39 +1,48 @@
 package kauppalistapp.apurit;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class TiedostonLukija {
-    private Scanner tiedostonLukija;
-    
-    public TiedostonLukija(String tiedosto) throws FileNotFoundException {
-        this.tiedostonLukija = new Scanner(new File(tiedosto));
-    }
-    
-    public boolean onkoSisaltoa() {
-        if (this.tiedostonLukija.hasNext()) {
-            return true;
-        }
-        else {
+
+    public boolean onkoSisaltoa(String tiedosto) {
+        try {
+            Scanner lukija = new Scanner(new File(tiedosto));
+        } catch (Exception ex) {
             return false;
         }
+        return true;
     }
-    
-    public List<String> lueJaAnnaListana() {
+
+    public List<String> lueJaAnnaListana(String tiedosto) {
         ArrayList<String> lista = new ArrayList<String>();
-        while (this.tiedostonLukija.hasNext()) {
-            lista.add(this.tiedostonLukija.nextLine());
+        try {
+            Scanner lukija = new Scanner(new File(tiedosto));
+
+            while (lukija.hasNext()) {
+                lista.add(lukija.nextLine());
+            }
+        } catch (Exception ex) {
+            return lista;
         }
+        Collections.sort(lista);
         return lista;
     }
-    
-    public int riveja() throws FileNotFoundException {
+
+    public int riveja(String tiedosto) {
         int riveja = 0;
-        while (this.tiedostonLukija.hasNext()) {
-            this.tiedostonLukija.nextLine();
-            riveja++;
+        try {
+            Scanner lukija = new Scanner(new File(tiedosto));
+
+            while (lukija.hasNext()) {
+                lukija.nextLine();
+                riveja++;
+            }
+        } catch (Exception ex) {
         }
 
         return riveja;

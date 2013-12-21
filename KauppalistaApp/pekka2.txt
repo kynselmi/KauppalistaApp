@@ -1,2 +1,1 @@
-pekka2.txt
-2 Suolevi
+terve

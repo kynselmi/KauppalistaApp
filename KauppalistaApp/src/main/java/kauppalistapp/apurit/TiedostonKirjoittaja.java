@@ -10,21 +10,23 @@ import java.util.ArrayList;
 public class TiedostonKirjoittaja {
 
     private FileWriter kirjoittaja;
-    private String tiedosto;
+    private TiedostonLukija tiedostonlukija;
 
-    public TiedostonKirjoittaja(String tiedosto) throws IOException {
-        this.tiedosto = tiedosto;
-        this.kirjoittaja = new FileWriter(this.tiedosto);
+    public TiedostonKirjoittaja() {
+        this.tiedostonlukija = new TiedostonLukija();
     }
 
-    public void kirjoitaTiedostoon(List<String> lista) throws FileNotFoundException, IOException {
-        TiedostonLukija tiedostonlukija = new TiedostonLukija(this.tiedosto);
-         int jarjestysluku = tiedostonlukija.riveja() + 1;
-         ArrayList<String> kirjoitettavatRivit = new ArrayList<String>();
+    public void kirjoitaTiedostoon(List<String> lista, String tiedostonNimi) {
+        int jarjestysluku = 1;
+        try {
+            jarjestysluku = this.tiedostonlukija.riveja(tiedostonNimi) + 1;
+        } catch (Exception ex) {
+        }
 
-        if (tiedostonlukija.onkoSisaltoa()) {
-            
-            for (String vanhaTieto : tiedostonlukija.lueJaAnnaListana()) {
+        ArrayList<String> kirjoitettavatRivit = new ArrayList<String>();
+
+        if (this.tiedostonlukija.onkoSisaltoa(tiedostonNimi)) {
+            for (String vanhaTieto : this.tiedostonlukija.lueJaAnnaListana(tiedostonNimi)) {
                 kirjoitettavatRivit.add(vanhaTieto);
             }
         }
@@ -32,12 +34,28 @@ public class TiedostonKirjoittaja {
             kirjoitettavatRivit.add(jarjestysluku + " " + uusiTieto);
             jarjestysluku++;
         }
+        try {
+            this.kirjoittaja = new FileWriter(tiedostonNimi);
+        } catch (Exception poikkeus) {
+        }
         for (String kirjoitettava : kirjoitettavatRivit) {
-            this.kirjoittaja.write(kirjoitettava);
+            try {
+                this.kirjoittaja.write(kirjoitettava + "\n");
+            } catch (Exception ex) {
+            }
+        }
+        try {
+            this.kirjoittaja.close();
+        } catch (Exception ex) {
         }
     }
 
-    public String getTiedosto() {
-        return this.tiedosto;
+    public void tyhjennaTiedosto(String tiedostonNimi) {
+        try {
+            this.kirjoittaja = new FileWriter(tiedostonNimi);
+            this.kirjoittaja.write("");
+        } catch (Exception ex) {
+            System.out.println("Tiedostoa ei löytynyt");
+        }
     }
 }
