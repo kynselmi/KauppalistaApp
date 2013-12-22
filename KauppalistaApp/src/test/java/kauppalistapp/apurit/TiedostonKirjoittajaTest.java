@@ -49,7 +49,7 @@ public class TiedostonKirjoittajaTest {
         lista.add("testi");
         String tiedostonNimi = "testiTiedosto.txt";
         this.tk.kirjoitaTiedostoon(lista, tiedostonNimi);
-        assertEquals("1 testi", this.tl.lueJaAnnaListana(tiedostonNimi).get(0));
+        assertEquals("1 - testi", this.tl.lueJaAnnaListana(tiedostonNimi).get(0));
     }
 
     @Test
@@ -67,10 +67,10 @@ public class TiedostonKirjoittajaTest {
         String tiedostonNimi = "testi2.txt";
         this.tk.kirjoitaTiedostoon(lista, tiedostonNimi);
         List<String> ListaTiedostosta = this.tl.lueJaAnnaListana(tiedostonNimi);
-        assertEquals("1 Testi", ListaTiedostosta.get(0));
-        assertEquals("2 Test", ListaTiedostosta.get(1));
-        assertEquals("3 T", ListaTiedostosta.get(2));
-        assertEquals("4 lisattavaa", ListaTiedostosta.get(3));
+        assertEquals("1 - Testi", ListaTiedostosta.get(0));
+        assertEquals("2 - Test", ListaTiedostosta.get(1));
+        assertEquals("3 - T", ListaTiedostosta.get(2));
+        assertEquals("4 - lisattavaa", ListaTiedostosta.get(3));
     }
     
     @Test

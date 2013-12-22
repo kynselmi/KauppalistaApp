@@ -38,7 +38,7 @@ public class TuoteTest {
     @Test
     public void toStringToimiiOikeinHinnanKanssa() {
         Tuote maito = new Tuote("Maito", 2, 50);
-        assertEquals("Maito, 2.0e", maito.toString());
+        assertEquals("Maito, 2,50e", maito.toString());
     }
     
 }

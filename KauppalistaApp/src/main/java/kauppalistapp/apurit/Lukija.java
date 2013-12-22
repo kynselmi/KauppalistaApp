@@ -11,13 +11,13 @@ public class Lukija {
     }
 
     public String lueTeksti() {
-        String teksti = this.lukija.nextLine();
+        String teksti = this.lukija.next();
         return teksti;
     }
 
     public String lueTeksti(String tekstia) {
         System.out.print(tekstia);
-        String teksti = this.lukija.nextLine();
+        String teksti = this.lukija.next();
         return teksti;
     }
 

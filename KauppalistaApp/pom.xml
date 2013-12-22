@@ -42,6 +42,20 @@
                 <groupId>org.pitest</groupId>
                 <artifactId>pitest-maven</artifactId>
                 <version>0.30</version>
+                              <configuration>
+                  <targetClasses>
+                      <param>kauppalistapp.apurit*</param>
+                      <param>kauppalistapp.komennot*</param>
+                      <param>kauppalistapp.logiikka*</param>
+                      <param>kauppalistapp.sovellus*</param>
+                  </targetClasses>
+                  <targetTests>
+                      <param>kauppalistapp.apurit*</param>
+                      <param>kauppalistapp.komennot*</param>
+                      <param>kauppalistapp.logiikka*</param>
+                      <param>kauppalistapp.sovellus*</param>
+                  </targetTests>
+              </configuration>
             </plugin>
         </plugins>
     </build>
