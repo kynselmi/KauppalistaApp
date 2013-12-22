@@ -11,9 +11,8 @@ public class EtsiTuote extends Komento {
     @Override
     public boolean suorita() {
         String hakusana = super.lukija.lueTeksti("Anna tuotteen nimi: ");
-        TiedostonLukija tl = new TiedostonLukija();
         int montakoLoytyi = 0;
-        for (String listalla : tl.lueJaAnnaListana("Tuotteet.txt")) {
+        for (String listalla : super.tiedostonLukija.lueJaAnnaListana("Tuotteet.txt")) {
             if (listalla.contains(hakusana)) {
                 System.out.println("  " + listalla);
                 montakoLoytyi++;

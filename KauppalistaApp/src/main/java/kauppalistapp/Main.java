@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.io.File;
 import kauppalistapp.sovellus.*;
 
-public class App {
+public class Main {
 
     public static void main(String[] args) throws IOException {
         Sovellus sv = new Sovellus();

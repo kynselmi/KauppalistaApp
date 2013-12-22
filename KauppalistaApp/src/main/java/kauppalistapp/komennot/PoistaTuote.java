@@ -1,6 +1,5 @@
-
 package kauppalistapp.komennot;
-import kauppalistapp.apurit.*;
+import kauppalistapp.apurit.Lukija;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -13,12 +12,10 @@ public class PoistaTuote extends Komento {
     @Override
     public boolean suorita() {
         int poistettavanRivi = super.lukija.lueInteger("Syota poistettavan tuotteen rivinumero: ");
-        TiedostonLukija tl = new TiedostonLukija();
-        List<String> lista = tl.annaListanaIlmanRiviNumeroa("Tuotteet.txt");
+        List<String> lista = super.tiedostonLukija.annaListanaIlmanRiviNumeroa("Tuotteet.txt");
         lista.remove(poistettavanRivi-1);        
-        TiedostonKirjoittaja tk = new TiedostonKirjoittaja();
-        tk.tyhjennaTiedosto("Tuotteet.txt");
-        tk.kirjoitaTiedostoon(lista, "Tuotteet.txt");
+        super.tiedostonKirjoittaja.tyhjennaTiedosto("Tuotteet.txt");
+        super.tiedostonKirjoittaja.kirjoitaTiedostoon(lista, "Tuotteet.txt");
         return true;
     }
     

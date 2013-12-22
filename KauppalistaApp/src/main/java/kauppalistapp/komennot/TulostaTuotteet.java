@@ -1,12 +1,6 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package kauppalistapp.komennot;
 import kauppalistapp.apurit.Lukija;
-import kauppalistapp.apurit.TiedostonLukija;
 import java.util.List;
-import java.util.ArrayList;
 
 public class TulostaTuotteet extends Komento {
     
@@ -16,8 +10,7 @@ public class TulostaTuotteet extends Komento {
 
     @Override
     public boolean suorita() {
-          TiedostonLukija tk = new TiedostonLukija();
-          tulostus(tk.lueJaAnnaListana("Tuotteet.txt"));
+          tulostus(super.tiedostonLukija.lueJaAnnaListana("Tuotteet.txt"));
           return true;
         
     }

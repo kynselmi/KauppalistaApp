@@ -14,14 +14,13 @@ public class JarjestaTuotteita extends Komento {
 
     @Override
     public boolean suorita() {
-        TiedostonLukija tl = new TiedostonLukija();
         TiedostonKirjoittaja tk = new TiedostonKirjoittaja();
         System.out.println("1 Aakkosjärjestykseen laskevasti");
         System.out.println("2 Aakkosjärjestykseen nousevasti");
         int komento = this.lukija.lueInteger("Anna komento: ");
 
         ListanJarjestaja jarjestaja = new ListanJarjestaja();
-        List<String> muokattavaLista = tl.annaListanaIlmanRiviNumeroa("Tuotteet.txt");
+        List<String> muokattavaLista = super.tiedostonLukija.annaListanaIlmanRiviNumeroa("Tuotteet.txt");
         if (komento == 1) {
             muokattavaLista = jarjestaja.jarjestaAakkosjarjestykseenLaskevasti(muokattavaLista);
         }
