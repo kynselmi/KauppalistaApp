@@ -22,14 +22,13 @@ public class Lukija {
     }
 
     public int lueInteger() {
-        int nro = -150;
+        String nro = "-1";
         try {
-            nro = Integer.parseInt(this.lukija.nextLine());
+            nro = this.lukija.next();            
         } catch (Exception Ex) {
             System.out.println("Syötteesi ei ole kokonaisluku");
-
         }
-        return nro;
+        return Integer.parseInt(nro);
     }
     
         public int lueInteger(String teksti) {
@@ -44,12 +43,5 @@ public class Lukija {
         return nro;
     }
 
-    public double lueLiukuluku() {
-        return this.lukija.nextDouble();
-    }
 
-    public double lueLiukuluku(String tekstia) {
-        return 0;
-        
-    }
 }

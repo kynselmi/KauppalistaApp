@@ -7,12 +7,13 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import java.io.ByteArrayInputStream;
+import java.nio.ByteBuffer;
+import Testiapu.SyoteJaTulostusApuri;
 
 public class LukijaTest {
-    
+
     private Lukija lukija;
-    private Lukija lukijaInt;
-    private ByteArrayInputStream syote;
+    SyoteJaTulostusApuri syo;
 
     @BeforeClass
     public static void setUpClass() {
@@ -24,9 +25,9 @@ public class LukijaTest {
 
     @Before
     public void setUp() {
-        this.syote = new ByteArrayInputStream("Testi".getBytes());
-        System.setIn(this.syote);
-        this.lukija = new Lukija();
+//        this.syote = new ByteArrayInputStream("5".getBytes());
+//        System.setIn(this.syote);
+        this.syo = new SyoteJaTulostusApuri();
     }
 
     @After
@@ -35,16 +36,29 @@ public class LukijaTest {
 
     @Test
     public void lukeeString() {
+        System.setIn(this.syo.otaSyote("Testi"));
+        this.lukija = new Lukija();
         assertEquals("Testi", this.lukija.lueTeksti());
+    }
+
+    @Test
+    public void lukeeStringTekstia() {
+        System.setIn(this.syo.otaSyote("Testi"));
+        this.lukija = new Lukija();
+        assertEquals("Testi", this.lukija.lueTeksti("Test"));
+    }
+
+    @Test
+    public void lukeeInt() {
+        System.setIn(this.syo.otaSyote("5"));
+        this.lukija = new Lukija();
+        assertEquals(5, this.lukija.lueInteger());
     }
     
     @Test
-    public void lukeeStringTekstia() {
-        assertEquals("Testi", this.lukija.lueTeksti("Test"));
+    public void lukeeIntTekstia() {
+        System.setIn(this.syo.otaSyote("10"));
+        this.lukija = new Lukija();
+        assertEquals(10, this.lukija.lueInteger("Testi"));
     }
-    
- //   @Test
- //   public void lukeeInt() {
-//        assertEquals(5, this.lukija.lueInteger());
- //   }
 }
