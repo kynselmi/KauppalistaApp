@@ -26,21 +26,20 @@ public class Lukija {
         try {
             nro = this.lukija.next();            
         } catch (Exception Ex) {
-            System.out.println("Syötteesi ei ole kokonaisluku");
         }
         return Integer.parseInt(nro);
     }
     
         public int lueInteger(String teksti) {
-        int nro = 0;
+        int numero = -1;
         System.out.print(teksti);
         try {
-            nro = Integer.parseInt(this.lukija.nextLine());
+            String nro = this.lukija.next();
+            numero = Integer.parseInt(nro);
         } catch (Exception Ex) {
-            System.out.println("Syötteesi ei ole kokonaisluku");
 
         }
-        return nro;
+        return numero;
     }
 
 

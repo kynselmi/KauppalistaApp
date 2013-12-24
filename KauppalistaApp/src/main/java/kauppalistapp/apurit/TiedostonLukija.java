@@ -9,19 +9,19 @@ import java.util.Collections;
 
 public class TiedostonLukija {
 
-    public boolean onkoSisaltoa(String tiedosto) {
+    public boolean onkoSisaltoa(File tiedosto) {
         try {
-            Scanner lukija = new Scanner(new File(tiedosto));
+            Scanner lukija = new Scanner(tiedosto);
         } catch (Exception ex) {
             return false;
         }
         return true;
     }
 
-    public List<String> lueJaAnnaListana(String tiedosto) {
+    public List<String> lueJaAnnaListana(File tiedosto) {
         ArrayList<String> lista = new ArrayList<String>();
         try {
-            Scanner lukija = new Scanner(new File(tiedosto));
+            Scanner lukija = new Scanner(tiedosto);
 
             while (lukija.hasNextLine()) {
                 lista.add(lukija.nextLine());
@@ -33,10 +33,10 @@ public class TiedostonLukija {
         return lista;
     }
 
-    public int riveja(String tiedosto) {
+    public int riveja(File tiedosto) {
         int riveja = 0;
         try {
-            Scanner lukija = new Scanner(new File(tiedosto));
+            Scanner lukija = new Scanner(tiedosto);
 
             while (lukija.hasNext()) {
                 lukija.nextLine();
@@ -48,7 +48,7 @@ public class TiedostonLukija {
         return riveja;
     }
     
-    public List<String> annaListanaIlmanRiviNumeroa(String tiedostonNimi) {
+    public List<String> annaListanaIlmanRiviNumeroa(File tiedostonNimi) {
         List<String> trimmattuLista = new ArrayList<String>();
         for (String trimmattava : this.lueJaAnnaListana(tiedostonNimi)) {
             trimmattuLista.add(trimmattava.split("-")[1].trim());

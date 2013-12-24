@@ -5,11 +5,13 @@ import java.util.Collections;
 import java.util.List;
 import java.util.ArrayList;
 import kauppalistapp.apurit.ListanJarjestaja;
+import kauppalistapp.logiikka.Lista;
+import kauppalistapp.logiikka.Tiedosto;
 
 public class JarjestaTuotteita extends Komento {
 
-    public JarjestaTuotteita(int numero, String nimi, Lukija lukija) {
-        super(numero, nimi, lukija);
+    public JarjestaTuotteita(int numero, String nimi, Lukija lukija, Tiedosto tiedosto, List<Lista> tallennetutListat) {
+        super(numero, nimi, lukija, tiedosto, tallennetutListat);
     }
 
     @Override
@@ -20,15 +22,15 @@ public class JarjestaTuotteita extends Komento {
         int komento = this.lukija.lueInteger("Anna komento: ");
 
         ListanJarjestaja jarjestaja = new ListanJarjestaja();
-        List<String> muokattavaLista = super.tiedostonLukija.annaListanaIlmanRiviNumeroa("Tuotteet.txt");
+        List<String> muokattavaLista = super.tiedostonLukija.annaListanaIlmanRiviNumeroa(super.tiedosto.getTiedosto());
         if (komento == 1) {
             muokattavaLista = jarjestaja.jarjestaAakkosjarjestykseenLaskevasti(muokattavaLista);
         }
         if (komento == 2) {
             muokattavaLista = jarjestaja.jarjestaAakkosjarjestykseenNousevasti(muokattavaLista);
         }
-        tk.tyhjennaTiedosto("Tuotteet.txt");
-        tk.kirjoitaTiedostoon(muokattavaLista, "Tuotteet.txt");
+        tk.tyhjennaTiedosto(this.tiedosto.getNimi());
+        tk.kirjoitaTiedostoon(muokattavaLista, this.tiedosto.getNimi());
         return true;
     }
 }

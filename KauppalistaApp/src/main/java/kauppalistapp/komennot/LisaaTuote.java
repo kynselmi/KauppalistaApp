@@ -3,16 +3,17 @@ package kauppalistapp.komennot;
 import kauppalistapp.logiikka.*;
 import kauppalistapp.apurit.Lukija;
 import java.util.ArrayList;
+import java.util.List;
 
 public class LisaaTuote extends Komento {
 
-    public LisaaTuote(int numero, String nimi, Lukija lukija) {
-        super(numero, nimi, lukija);
+    public LisaaTuote(int numero, String nimi, Lukija lukija, Tiedosto tiedosto, List<Lista> tallennetutListat) {
+        super(numero, nimi, lukija, tiedosto, tallennetutListat);
     }
 
     @Override
     public boolean suorita() {
-        int rivinumero = super.tiedostonLukija.riveja("Tuotteet.txt");
+        int rivinumero = super.tiedostonLukija.riveja(super.tiedosto.getTiedosto());
         ArrayList<String> lista;
         while (true) {
             Tuote tuote;
@@ -31,7 +32,7 @@ public class LisaaTuote extends Komento {
 
             lista = new ArrayList<String>();
             lista.add(tuote.toString());
-            super.tiedostonKirjoittaja.kirjoitaTiedostoon(lista, "Tuotteet.txt");
+            super.tiedostonKirjoittaja.kirjoitaTiedostoon(lista, this.tiedosto.getNimi());
             rivinumero++;
         }
 

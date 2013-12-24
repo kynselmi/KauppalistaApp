@@ -12,6 +12,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import java.util.List;
 import java.util.ArrayList;
+import kauppalistapp.logiikka.Tiedosto;
 
 /**
  *
@@ -21,6 +22,7 @@ public class TiedostonKirjoittajaTest {
 
     private TiedostonKirjoittaja tk;
     private TiedostonLukija tl;
+    private Tiedosto tiedosto;
 
     public TiedostonKirjoittajaTest() {
     }
@@ -37,6 +39,7 @@ public class TiedostonKirjoittajaTest {
     public void setUp() {
         this.tk = new TiedostonKirjoittaja();
         this.tl = new TiedostonLukija();
+        this.tiedosto = new Tiedosto("Testi");
     }
 
     @After
@@ -47,9 +50,8 @@ public class TiedostonKirjoittajaTest {
     public void uuteenTiedostoonKirjoittaminenToimii() {
         ArrayList<String> lista = new ArrayList<String>();
         lista.add("testi");
-        String tiedostonNimi = "testiTiedosto.txt";
-        this.tk.kirjoitaTiedostoon(lista, tiedostonNimi);
-        assertEquals("1 - testi", this.tl.lueJaAnnaListana(tiedostonNimi).get(0));
+        this.tk.kirjoitaTiedostoon(lista, this.tiedosto.getNimi());
+        assertEquals("1 - testi", this.tl.lueJaAnnaListana(this.tiedosto.getTiedosto()).get(0));
     }
 
     @Test
