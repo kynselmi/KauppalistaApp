@@ -7,6 +7,11 @@ import kauppalistapp.logiikka.Lista;
 import java.util.TreeMap;
 import java.util.ArrayList;
 
+/**
+ *
+ * @author Kärkkäinen Aleksi
+ * @version 0.1
+ */
 public class Sovellus {
 
     private Lukija lukija;
@@ -16,6 +21,9 @@ public class Sovellus {
     private ArrayList<Lista> tallennetutListat;
 
 
+    /**
+     * Sovellus-olion konstruktori
+     */
     public Sovellus() {
         this.komennot = new TreeMap<Integer, Komento>();
         this.lukija = new Lukija();
@@ -24,6 +32,9 @@ public class Sovellus {
         this.tallennetutListat = new ArrayList<Lista>();        
     }
 
+    /**
+     * Kaynnistaa sovelluksen
+     */
     public void kaynnista() {
         System.out.println("*****KauppalistaApp*****");
         System.out.println("");
@@ -46,6 +57,9 @@ public class Sovellus {
 
     }
 
+    /**
+     * Lisää sovelluksen komennot
+     */
     public void lisaaKomennot() {
         this.komennot.put(1, new TulostaTuotteet(1, "Tulosta tuotteet", this.lukija, this.kaytettavaTiedosto, this.tallennetutListat));
         this.komennot.put(2, new LisaaTuote(2, "Lisaa tuote", this.lukija, this.kaytettavaTiedosto, this.tallennetutListat));
@@ -55,6 +69,9 @@ public class Sovellus {
         this.komennot.put(6, new LisaaListalle(6, "Lisaa listalle", this.lukija, this.kaytettavaTiedosto, this.tallennetutListat));
     }
 
+    /**
+     * Tulostaa sovelluksen komennot
+     */
     public void tulostaKomennot() {
         for (int i = 1; i <= 6; i++) {
             System.out.println(this.komennot.get(i));
@@ -62,10 +79,18 @@ public class Sovellus {
         System.out.println("¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨");
     }
     
+    /**
+     * Antaa komentojen maaran
+     * @return komentojen maara
+     */
     public int komentojenMaara() {
         return this.komennot.keySet().size();
     }
     
+    /**
+     * Lisaa tallennetut listat taulukkoon
+     * @param tiedosto Tallennetut listat sisaltava tiedosto
+     */
     public void lisaaListat(Tiedosto tiedosto) {
         for (String listanNimi : this.tallennetutListatTiedosto.annaListana()) {
             this.tallennetutListat.add(new Lista(listanNimi));

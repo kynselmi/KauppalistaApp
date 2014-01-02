@@ -8,16 +8,29 @@ import java.util.List;
 import java.util.ArrayList;
 import kauppalistapp.logiikka.Tiedosto;
 
+/**
+ *
+ * @author Kärkkäinen Aleksi
+ * @version 0.1
+ */
 public class TiedostonKirjoittaja {
 
     private FileWriter kirjoittaja;
     private TiedostonLukija tiedostonlukija;
     private Tiedosto tiedosto;
 
+    /**
+     * TiedostonKirjoittaja-olion konstruktori
+     */
     public TiedostonKirjoittaja() {
         this.tiedostonlukija = new TiedostonLukija();
     }
 
+    /**
+     * Kirjoittaa tekstitiedostoon
+     * @param lista tulostettava teksti listamuodossa
+     * @param tiedostonNimi kirjoitettavan tiedoston nimi
+     */
     public void kirjoitaTiedostoon(List<String> lista, String tiedostonNimi) {
         //try {
         //    jarjestysluku = this.tiedostonlukija.riveja(tiedostonNimi) + 1;
@@ -57,6 +70,10 @@ public class TiedostonKirjoittaja {
         }
     }
 
+    /**
+     * Tyhjentaa tekstitiedoston
+     * @param tiedostonNimi Tyhjennettavan tiedoston nimi
+     */
     public void tyhjennaTiedosto(String tiedostonNimi) {
         this.tiedosto = new Tiedosto(tiedostonNimi);
         try {

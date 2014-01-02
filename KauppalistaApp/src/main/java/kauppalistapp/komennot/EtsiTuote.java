@@ -5,8 +5,20 @@ import kauppalistapp.apurit.*;
 import kauppalistapp.logiikka.Lista;
 import kauppalistapp.logiikka.Tiedosto;
 
+/**
+ * @author Kärkkäinen Aleksi
+ * @version 0.1
+ */
 public class EtsiTuote extends Komento {
-
+    
+    /**
+     * EtsiTuote-komennon konstruktori
+     * @param numero Komennon numero
+     * @param nimi  Komennon nimi
+     * @param lukija Lukija-tyyppiä oleva scanner-lukija
+     * @param tiedosto Tallennetut Tuotteet
+     * @param tallennetutListat Käyttäjän luomat tallennetut listat
+     */
     public EtsiTuote(int numero, String nimi, Lukija lukija, Tiedosto tiedosto, List<Lista> tallennetutListat) {
         super(numero, nimi, lukija, tiedosto, tallennetutListat);
     }

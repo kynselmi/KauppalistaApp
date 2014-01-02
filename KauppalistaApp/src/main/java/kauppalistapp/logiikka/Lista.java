@@ -5,11 +5,20 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 
+/**
+ *
+ * @author Kärkkäinen Aleksi
+ * @version 0.1
+ */
 public class Lista {
 
     private LinkedHashMap<Tuote, Integer> maaranTietavaLista;
     private Tiedosto tiedosto;
 
+    /**
+     * Lista-olion konstruktori
+     * @param nimi Listan nimi
+     */
     public Lista(String nimi) {
         this.maaranTietavaLista = new LinkedHashMap<Tuote, Integer>();
         this.tiedosto = new Tiedosto(nimi);        
@@ -44,6 +53,11 @@ public class Lista {
         }
     }
 
+    /**
+     * Antaa LinkedHashMapin tuotteet listamuodossa
+     * @return Listan, jossa Tuote-olioita
+     * @see Tuote
+     */
     public List<Tuote> tuotteetListana() {
         List<Tuote> tuoteLista = new ArrayList<Tuote>();
         for (Tuote tuote : this.maaranTietavaLista.keySet()) {
@@ -51,11 +65,16 @@ public class Lista {
         }
         return tuoteLista;
     }
-
+    
     public LinkedHashMap<Tuote, Integer> getMaaranTietavaLista() {
         return maaranTietavaLista;
     }
 
+    /**
+     * Antaa rivinumeron mukaan tuotteen tuotelistalta
+     * @param riviNumero Tuotteen rivinumero tuotelistalla
+     * @return Tuote, joka on parametrinä annetulla rivillä
+     */
     public Tuote annaRivi(int riviNumero) {
         Tuote palautettavaTuote;
         try {
@@ -66,10 +85,15 @@ public class Lista {
         return palautettavaTuote;
     }
 
+ 
     public Tiedosto getTiedosto() {
         return tiedosto;
     }
     
+    /**
+     * Antaa Lista-olion List-muodossa
+     * @return Listalla olevien tuotteiden String-esitykset List-muodossa
+     */
     public List<String> annaStringListana() {
         List<String> StringLista = new ArrayList<String>();
         for (Tuote tuote : this.maaranTietavaLista.keySet()) {
@@ -78,6 +102,10 @@ public class Lista {
         return StringLista;
     }
     
+    /**
+     * Antaa Lista-olion määrän kanssa List-muodossa
+     * @return Listalla olevien tuotteiden String-esitykset lisättynä kappalemäärällä List-muodossa
+     */
     public List<String> annaStringListanaMaaraMukana() {
         List<String> StringLista = new ArrayList<String>();
         for (Tuote tuote : this.maaranTietavaLista.keySet()) {
@@ -91,6 +119,10 @@ public class Lista {
         return StringLista;
     }
     
+    /**
+     * Antaa tuotteiden määrän listalla
+     * @return tuotteiden kappalemäärä
+     */
     public int annaTuotteidenMaara() {
         int tuotteidenMaara = 0;
         for (Tuote tuote : this.maaranTietavaLista.keySet()) {

@@ -46,22 +46,6 @@ public class EtsiTuoteTest {
     public void tearDown() {
     }
 
-    @Test
-    public void tulostaaOikeinKunTuoteLoytyy() {
 
-
-        String[] oikein = {
-            "Anna tuotteen nimi:   1 - Maito ",
-            "Hakusanallasi loytyi yksi tulos "};
-
-        ByteArrayOutputStream tulostus = this.SJTApuri.tarkistaTulostus();
-        System.setOut(new PrintStream(tulostus));
-        System.setIn(this.SJTApuri.otaSyote("Maito"));
-        this.lukija = new Lukija();
-        this.komento = new EtsiTuote(1, "Testaa", this.lukija, this.tallennetutTuotteetTesti, this.tallennetutListat);
-        this.komento.suorita();
-        String[] tuloste = tulostus.toString().split("\n");
-        String test = tuloste[0];
-        assertEquals("Anna tuotteen nimi:   1 - Maito ", test);
-    }
+    
 }

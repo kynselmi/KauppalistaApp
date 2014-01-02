@@ -5,8 +5,21 @@ import kauppalistapp.apurit.Lukija;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ * @author Kärkkäinen Aleksi
+ * @version 0.1
+ */
 public class LisaaTuote extends Komento {
 
+    /**
+     * LisaaTuote-olion konstruktori
+     * @param numero Komennon numero
+     * @param nimi  Komennon nimi
+     * @param lukija Lukija-tyyppiä oleva scanner-lukija
+     * @param tiedosto Tallennetut Tuotteet
+     * @param tallennetutListat Käyttäjän luomat tallennetut listat
+     */
     public LisaaTuote(int numero, String nimi, Lukija lukija, Tiedosto tiedosto, List<Lista> tallennetutListat) {
         super(numero, nimi, lukija, tiedosto, tallennetutListat);
     }

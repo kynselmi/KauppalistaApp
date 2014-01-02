@@ -5,16 +5,44 @@ import kauppalistapp.logiikka.Tiedosto;
 import kauppalistapp.logiikka.Lista;
 import java.util.List;
 
+/**
+ *
+ * @author Kärkkäinen Aleksi
+ * @version 0.1
+ */
 public abstract class Komento {
     
     private int numero;
     private String nimi;
+    /**
+     * Lukija-olio, johon on kapseloitu Scanner
+     */
     protected Lukija lukija;
+    /**
+     * TiedostonLukija-olio, johon on kapseloitu tekstitiedostonlukija
+     */
     protected TiedostonLukija tiedostonLukija;
+    /**
+     * TiedonKirjoittaja-olio, johon on kapseloitu tekstitiedostonkirjoittaja
+     */
     protected TiedostonKirjoittaja tiedostonKirjoittaja;
+    /**
+     * Tallennetut tuotteet sisältävä Tiedosto-olio
+     */
     protected Tiedosto tiedosto;
+    /**
+     * Käyttäjän tallentamat listat 
+     */
     protected List<Lista> tallennetutListat;
     
+    /**
+     * Komento-luokan konstruktori
+     * @param numero Komennon numero
+     * @param nimi  Komennon nimi
+     * @param lukija Lukija-tyyppiä oleva scanner-lukija
+     * @param tiedosto Tallennetut Tuotteet
+     * @param tallennetutListat Käyttäjän luomat tallennetut listat
+     */
     public Komento(int numero, String nimi, Lukija lukija, Tiedosto tiedosto, List<Lista> tallennetutListat) {
         this.numero = numero;
         this.nimi = nimi;
@@ -38,7 +66,7 @@ public abstract class Komento {
     
 /**
  * Suorittaa komennon
- * @return 
+ * @return Palauttaa totuusarvona true jos ohjelman tulee jatkua komennon suorittamisen jälkeen. Palauttaa false jos ohjelman tulee päättyä.
  */
     public abstract boolean suorita();
         

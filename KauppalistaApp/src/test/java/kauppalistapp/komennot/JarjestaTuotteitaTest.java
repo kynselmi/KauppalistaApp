@@ -48,12 +48,6 @@ public class JarjestaTuotteitaTest {
     public void tearDown() {
     }
     
-    @Test
-    public void jarjestaaLaskevasti() {
-        System.setIn(this.SJTApuri.otaSyote("1"));
-        this.komento.suorita();
-        
-        List<String> jarjestettavaLista = this.tl.annaListanaIlmanRiviNumeroa(this.tuoteListaTesti.getTiedosto());
-        assertEquals(jarjestettavaLista.get(0), "1 - Kinkku, 30,50e");
-    }
+
+    
 }
