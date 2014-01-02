@@ -1,18 +1,12 @@
 package kauppalistapp;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.io.File;
-import kauppalistapp.sovellus.*;
-import java.io.ByteArrayInputStream;
-import java.util.Scanner;
-import kauppalistapp.apurit.*;
-import kauppalistapp.logiikka.*;
+import kauppalistapp.logiikka.Tiedosto;
+import kauppalistapp.sovellus.Sovellus;
 
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         Sovellus sv = new Sovellus();
         sv.kaynnista();
     }

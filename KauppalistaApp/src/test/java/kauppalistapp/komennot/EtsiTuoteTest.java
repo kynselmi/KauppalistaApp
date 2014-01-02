@@ -11,12 +11,17 @@ import Testiapu.SyoteJaTulostusApuri;
 import java.io.PrintStream;
 import java.io.ByteArrayOutputStream;
 import java.io.ByteArrayInputStream;
+import kauppalistapp.logiikka.*;
+import java.util.List;
+import java.util.ArrayList;
 
 public class EtsiTuoteTest {
 
     private SyoteJaTulostusApuri SJTApuri;
     private Lukija lukija;
     private Komento komento;
+    private Tiedosto tallennetutTuotteetTesti;
+    private List<Lista> tallennetutListat;
 
     public EtsiTuoteTest() {
     }
@@ -33,6 +38,8 @@ public class EtsiTuoteTest {
     public void setUp() {
         this.lukija = new Lukija();
         this.SJTApuri = new SyoteJaTulostusApuri();
+        this.tallennetutListat = new ArrayList<Lista>();
+        this.tallennetutTuotteetTesti = new Tiedosto("TuotelistaTestaus");
     }
 
     @After
@@ -41,13 +48,20 @@ public class EtsiTuoteTest {
 
     @Test
     public void tulostaaOikeinKunTuoteLoytyy() {
+
+
+        String[] oikein = {
+            "Anna tuotteen nimi:   1 - Maito ",
+            "Hakusanallasi loytyi yksi tulos "};
+
         ByteArrayOutputStream tulostus = this.SJTApuri.tarkistaTulostus();
         System.setOut(new PrintStream(tulostus));
         System.setIn(this.SJTApuri.otaSyote("Maito"));
         this.lukija = new Lukija();
-        this.komento = new EtsiTuote(1, "Testaa", this.lukija);
+        this.komento = new EtsiTuote(1, "Testaa", this.lukija, this.tallennetutTuotteetTesti, this.tallennetutListat);
         this.komento.suorita();
-        System.out.println(tulostus.toString());
-
+        String[] tuloste = tulostus.toString().split("\n");
+        String test = tuloste[0];
+        assertEquals("Anna tuotteen nimi:   1 - Maito ", test);
     }
 }

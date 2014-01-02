@@ -22,12 +22,12 @@ public class EtsiTuote extends Komento {
             }
         }
         if (montakoLoytyi == 1) {
-            System.out.println("Hakusanallasi löytyi yksi tulos");
+            System.out.println("Hakusanallasi loytyi yksi tulos");
         }
         else if (montakoLoytyi == 0) {
             System.out.println("Hakusanallasi ei loytynyt yhtaan tulosta");
         } else {
-            System.out.println("Hakusanallasi löytyi " + montakoLoytyi + " tulosta");
+            System.out.println("Hakusanallasi loytyi " + montakoLoytyi + " tulosta");
         }
         System.out.println("");
         return true;

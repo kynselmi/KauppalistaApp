@@ -25,8 +25,6 @@ public class LukijaTest {
 
     @Before
     public void setUp() {
-//        this.syote = new ByteArrayInputStream("5".getBytes());
-//        System.setIn(this.syote);
         this.syo = new SyoteJaTulostusApuri();
     }
 

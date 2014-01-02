@@ -32,7 +32,7 @@ public class ListaTest {
 
     @Before
     public void setUp() {
-        this.testiLista = new Lista();
+        this.testiLista = new Lista("testi");
     }
 
     @After

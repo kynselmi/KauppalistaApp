@@ -37,8 +37,8 @@ public class Tiedosto {
     
     public Lista annaTuoteListana() {
         Lista tuoteLista = new Lista("Blaablaa");
-        for (String tuote : this.annaListana()) {
-            Tuote lisattavaTuote;
+        Tuote lisattavaTuote;
+        for (String tuote : this.annaListana()) {            
             String[] tuoteHajotettuna = tuote.split(",");
             String nimi = tuoteHajotettuna[0].trim();
             try {
@@ -47,9 +47,11 @@ public class Tiedosto {
                 lisattavaTuote = new Tuote(nimi, eurot, sentit);
             } catch (Exception ex) {
                 lisattavaTuote = new Tuote(nimi);
-            }            
+            }
             tuoteLista.lisaaListalle(lisattavaTuote, 1);
         }
+        
+        System.out.println(tuoteLista);
         return tuoteLista;
     }
     

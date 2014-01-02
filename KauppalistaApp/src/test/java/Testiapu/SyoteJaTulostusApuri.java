@@ -17,5 +17,4 @@ public class SyoteJaTulostusApuri {
         this.tulostus = new ByteArrayOutputStream();
         return this.tulostus;
     }
-
 }

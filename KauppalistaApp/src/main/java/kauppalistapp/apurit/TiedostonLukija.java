@@ -50,8 +50,11 @@ public class TiedostonLukija {
     
     public List<String> annaListanaIlmanRiviNumeroa(File tiedostonNimi) {
         List<String> trimmattuLista = new ArrayList<String>();
-        for (String trimmattava : this.lueJaAnnaListana(tiedostonNimi)) {
+        try {
+            for (String trimmattava : this.lueJaAnnaListana(tiedostonNimi)) {
             trimmattuLista.add(trimmattava.split("-")[1].trim());
+        }} catch (Exception ex) {
+            
         }
         return trimmattuLista;
     }

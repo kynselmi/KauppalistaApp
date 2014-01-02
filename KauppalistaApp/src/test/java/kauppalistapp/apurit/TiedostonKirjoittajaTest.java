@@ -61,14 +61,15 @@ public class TiedostonKirjoittajaTest {
         vanhaTavara.add("Testi");
         vanhaTavara.add("Test");
         vanhaTavara.add("T");
-            
+        
+        this.tiedosto = new Tiedosto("testi2.txt");
         this.tk.kirjoitaTiedostoon(vanhaTavara, "testi2.txt");        
         
         ArrayList<String> lista = new ArrayList<String>();
         lista.add("lisattavaa");
         String tiedostonNimi = "testi2.txt";
         this.tk.kirjoitaTiedostoon(lista, tiedostonNimi);
-        List<String> ListaTiedostosta = this.tl.lueJaAnnaListana(tiedostonNimi);
+        List<String> ListaTiedostosta = this.tl.lueJaAnnaListana(this.tiedosto.getTiedosto());
         assertEquals("1 - Testi", ListaTiedostosta.get(0));
         assertEquals("2 - Test", ListaTiedostosta.get(1));
         assertEquals("3 - T", ListaTiedostosta.get(2));
@@ -78,6 +79,15 @@ public class TiedostonKirjoittajaTest {
     @Test
     public void eiKaaduJosTiedostoaEiLoydyTyhjennettaessa() {
         this.tk.tyhjennaTiedosto("tataeioleolemassa.txt");        
+    }
+    
+    @Test
+    public void tyhjentaaTiedoston() {
+       this.tiedosto = new Tiedosto("testi3");
+       List<String> lisattava = new ArrayList<String>();
+       lisattava.add("tyhjennettava");
+       
+       this.tk.kirjoitaTiedostoon(lisattava, this.tiedosto.getNimi());
     }
     
 

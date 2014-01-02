@@ -11,6 +11,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import java.util.List;
+import kauppalistapp.logiikka.Tiedosto;
 
 /**
  *
@@ -42,45 +43,45 @@ public class TiedostonLukijaTest {
     
     @Test
     public void lukeeYhdenRivinTiedostosta() {
-        List<String> lista = this.tl.lueJaAnnaListana("yhdenRivinLuettava.txt");
+        List<String> lista = this.tl.lueJaAnnaListana(new Tiedosto("yhdenRivinLuettava.txt").getTiedosto());
         assertEquals("testing", lista.get(0));
     }
     
     @Test
     public void lukeeUseammanRivinTiedostosta() {
-        List<String> lista = this.tl.lueJaAnnaListana("useammanRivinLuettava.txt");
+        List<String> lista = this.tl.lueJaAnnaListana(new Tiedosto("useammanRivinLuettava.txt").getTiedosto());
         assertEquals("testi1", lista.get(0));
         assertEquals("testi2", lista.get(1));
     }
     
     @Test
     public void eiKaaduJosEiLoydyTiedostoaLuettaessa() {
-        this.tl.lueJaAnnaListana("tatatiedostoaeiole.txt");
+        this.tl.lueJaAnnaListana(new Tiedosto("tatatiedostoaeiole.txt").getTiedosto());
     }
     
     @Test
     public void eiKaaduJosEiLoydyTiedostoaRiveja() {
-        this.tl.riveja("tatatiedostoaeiole.txt");
+        this.tl.riveja(new Tiedosto("tatatiedostoaeiole.txt").getTiedosto());
     }
     
     @Test
     public void eiKaaduJoseiLoydyTiedostoaOnkoSisaltoa() {
-        this.tl.onkoSisaltoa("tatatiedostoaeiole.txt");
+        this.tl.onkoSisaltoa(new Tiedosto("tatatiedostoaeiole.txt").getTiedosto());
     }
     
     @Test
     public void antaaOikeanRivimaaranYksi() {
-        assertEquals(this.tl.riveja("yhdenRivinLuettava.txt"), 1);
+        assertEquals(this.tl.riveja(new Tiedosto("yhdenRivinLuettava.txt").getTiedosto()), 1);
     }
     
     @Test
     public void antaaOikeanRivimaaranUseampi() {
-        assertEquals(this.tl.riveja("useammanRivinLuettava.txt"), 2);
+        assertEquals(this.tl.riveja(new Tiedosto("useammanRivinLuettava.txt").getTiedosto()), 2);
     }
     
     @Test
     public void antaaTrimmatunListan() {
-        List<String> trimmattuLista =  this.tl.annaListanaIlmanRiviNumeroa("TuotelistaTestaus.txt");
+        List<String> trimmattuLista =  this.tl.annaListanaIlmanRiviNumeroa(new Tiedosto("TuotelistaTestaus.txt").getTiedosto());
         assertEquals(trimmattuLista.get(0), "Maito");
         assertEquals(trimmattuLista.get(1), "Leipa");
         assertEquals(trimmattuLista.get(2), "Liha");

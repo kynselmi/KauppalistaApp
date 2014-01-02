@@ -38,7 +38,7 @@ public class Sovellus {
             System.out.println("Komennot:");
             System.out.println("");
             tulostaKomennot();
-            System.out.print("Anna komento (1-" + this.komentojenMaara() + ": ");           
+            System.out.print("Anna komento (1-" + this.komentojenMaara() + "): ");           
             int komento = this.lukija.lueInteger();
             System.out.println("");
             jatkuu = this.komennot.get(komento).suorita();            
