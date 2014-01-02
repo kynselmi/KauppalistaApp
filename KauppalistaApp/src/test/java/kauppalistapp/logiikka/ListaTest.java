@@ -42,18 +42,18 @@ public class ListaTest {
     @Test
     public void listalleLisaaminenOnnistuu() {
         Tuote testituote = new Tuote("Testituote");
-        this.testiLista.lisaaListalle(testituote, 2);
+        this.testiLista.lisaaListalle(testituote);
         int maara = testiLista.getMaaranTietavaLista().get(testituote);
-        assertEquals(maara, 2);
+        assertEquals(maara, 1);
     }
 
     @Test
     public void listalleLisataanOikeinKunTuoteOnJoListalla() {
         Tuote testituote = new Tuote("Testituote");
-        this.testiLista.lisaaListalle(testituote, 2);
-        this.testiLista.lisaaListalle(testituote, 3);
+        this.testiLista.lisaaListalle(testituote);
+        this.testiLista.lisaaListalle(testituote);
         int maara = testiLista.getMaaranTietavaLista().get(testituote);
-        assertEquals(maara, 5);
+        assertEquals(maara, 2);
     }
  
 }

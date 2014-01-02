@@ -21,6 +21,11 @@ public class PoistaTuote extends Komento {
         return true;
     }
     
+    /**
+     * Leikkaa Listasta stringeja valilyonnit pois
+     * @param lista Trimattava lista
+     * @return Trimmattu lista
+     */
     public List<String> trimmaaListaa(List<String> lista) {
         List<String> trimmattuLista = new ArrayList<String>();
         for (String listalla : lista) {

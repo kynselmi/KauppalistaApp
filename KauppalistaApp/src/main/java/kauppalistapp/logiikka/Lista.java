@@ -2,19 +2,23 @@ package kauppalistapp.logiikka;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.util.TreeMap;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 
 public class Lista {
 
-    private TreeMap<Tuote, Integer> maaranTietavaLista;
+    private LinkedHashMap<Tuote, Integer> maaranTietavaLista;
     private Tiedosto tiedosto;
 
     public Lista(String nimi) {
-        this.maaranTietavaLista = new TreeMap<Tuote, Integer>();
+        this.maaranTietavaLista = new LinkedHashMap<Tuote, Integer>();
         this.tiedosto = new Tiedosto(nimi);        
     }
     
-    public void lisaaTuotteetTreeMappiin() {
+    /**
+     * Lisaa tuotteet Tiedostosta LinkedHashMappiin
+     */
+    public void lisaaTuotteetLinkedHashMappiin() {
         Lista lista = this.tiedosto.annaTuoteListana();
         for (int i = 0; i < lista.annaStringListana().size(); i++) {
             Tuote lisattava = lista.annaRivi(i);
@@ -26,12 +30,17 @@ public class Lista {
             }
         }        
     }
-
-    public void lisaaListalle(Tuote tuote, int maara) {        
+    
+   
+    /**
+     * Lisaa LinkehHashMappiin tuotteen. Jos tuote on jo listalla, lisataan vain maaraa yhdella. 
+     * @param tuote Lisattava tuote
+     */
+    public void lisaaListalle(Tuote tuote) {        
         if (this.maaranTietavaLista.containsKey(tuote)) {
-            this.maaranTietavaLista.put(tuote, this.maaranTietavaLista.get(tuote) + maara);
+            this.maaranTietavaLista.put(tuote, this.maaranTietavaLista.get(tuote) + 1);
         } else {
-            this.maaranTietavaLista.put(tuote, maara);
+            this.maaranTietavaLista.put(tuote, 1);
         }
     }
 
@@ -43,14 +52,14 @@ public class Lista {
         return tuoteLista;
     }
 
-    public TreeMap<Tuote, Integer> getMaaranTietavaLista() {
+    public LinkedHashMap<Tuote, Integer> getMaaranTietavaLista() {
         return maaranTietavaLista;
     }
 
     public Tuote annaRivi(int riviNumero) {
         Tuote palautettavaTuote;
         try {
-            palautettavaTuote = this.tuotteetListana().get(riviNumero);
+            palautettavaTuote = this.tuotteetListana().get(riviNumero-1);
         }   catch (Exception ex) {
             palautettavaTuote = null;
         }

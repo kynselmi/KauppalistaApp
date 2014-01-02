@@ -21,23 +21,22 @@ public class LisaaListalle extends Komento {
         for (Lista lista : this.tallennetutListat) {
             if (lista.getTiedosto().getNimi().equals(listanNimi)) {
                 uusiLista = lista;
-                uusiLista.lisaaTuotteetTreeMappiin();
                 onkoListalla = true;
                 break;
             }
         }
 
         if (!onkoListalla) {
-            uusiLista = new Lista(listanNimi);            
+            uusiLista = new Lista(listanNimi);
         }
-        uusiLista.lisaaTuotteetTreeMappiin();
+        uusiLista.lisaaTuotteetLinkedHashMappiin();
         Lista tuoteLista = super.tiedosto.annaTuoteListana();
         ListastaTulostaja lt = new ListastaTulostaja();
-        while (true) {            
+        while (true) {
             System.out.println("Listalla " + listanNimi + " on " + uusiLista.annaTuotteidenMaara() + " tuotetta:");
+            lt.tulostaListasta(uusiLista.annaStringListanaMaaraMukana());
             System.out.println("");
 
-            lt.tulostaListasta(uusiLista.annaStringListanaMaaraMukana());
             System.out.println("Lisättävät tuotteet:");
             lt.tulostaListasta(super.tiedosto.annaListanaRiviNumeroMukana());
             int lisattavanRivinumero = super.lukija.lueInteger("Anna lisattavan tuotteen rivinumero (x lopettaa): ");
@@ -45,7 +44,7 @@ public class LisaaListalle extends Komento {
                 break;
             }
             if (tuoteLista.annaRivi(lisattavanRivinumero) != null) {
-                uusiLista.lisaaListalle(tuoteLista.annaRivi(lisattavanRivinumero), 1);
+                uusiLista.lisaaListalle(tuoteLista.annaRivi(lisattavanRivinumero));
             } else {
                 System.out.println("Listalla ei ole antamaasi riviä");
             }
@@ -60,7 +59,7 @@ public class LisaaListalle extends Komento {
             }
         }
         super.tallennetutListat.add(uusiLista);
-        
+
         List<String> uusiTallennetutListat = new ArrayList<String>();
         for (Lista listalla : this.tallennetutListat) {
             uusiTallennetutListat.add(listalla.getTiedosto().getNimi());
@@ -71,11 +70,13 @@ public class LisaaListalle extends Komento {
         return true;
     }
 
+    /**
+     * Tulostaa tallennetut listat rivittäin
+     */
     public void tulostaListat() {
         for (Lista lista : this.tallennetutListat) {
             System.out.println(lista.getTiedosto().getNimi());
         }
         System.out.println("");
     }
-       
 }

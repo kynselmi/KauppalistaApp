@@ -26,12 +26,20 @@ public abstract class Komento {
         
     }
     
+    /**
+     * Korvaa toString-metodin Komentoluokalle
+     * @return Komennon String-esitys
+     */
+    
     @Override
     public String toString() {
         return this.numero + " " + this.nimi;
     }
     
-
+/**
+ * Suorittaa komennon
+ * @return 
+ */
     public abstract boolean suorita();
         
     

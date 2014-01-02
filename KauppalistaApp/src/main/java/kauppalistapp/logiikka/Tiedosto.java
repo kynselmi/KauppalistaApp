@@ -48,10 +48,8 @@ public class Tiedosto {
             } catch (Exception ex) {
                 lisattavaTuote = new Tuote(nimi);
             }
-            tuoteLista.lisaaListalle(lisattavaTuote, 1);
+            tuoteLista.lisaaListalle(lisattavaTuote);
         }
-        
-        System.out.println(tuoteLista);
         return tuoteLista;
     }
     

@@ -17,6 +17,10 @@ public class TulostaTuotteet extends Komento {
         
     }
     
+    /**
+     * Tulostaa listan Stringeja yksi per rivi
+     * @param lista Tulostettava lista tuotteita
+     */
     public void tulostus(List<String> lista) {
         System.out.println("Tuotteet:");
         for (String tuote : lista) {
