@@ -1,7 +1,8 @@
 package kauppalistapp.komennot;
+import java.util.ArrayList;
 import kauppalistapp.apurit.Lukija;
 import java.util.List;
-import kauppalistapp.logiikka.Lista;
+import kauppalistapp.logiikka.Ostoslista;
 import kauppalistapp.logiikka.Tiedosto;
 
 /**
@@ -19,7 +20,7 @@ public class TulostaTuotteet extends Komento {
      * @param tiedosto Tallennetut Tuotteet
      * @param tallennetutListat Käyttäjän luomat tallennetut listat
      */
-    public TulostaTuotteet(int numero, String nimi, Lukija lukija, Tiedosto tiedosto, List<Lista> tallennetutListat) {
+    public TulostaTuotteet(int numero, String nimi, Lukija lukija, Tiedosto tiedosto, List<Ostoslista> tallennetutListat) {
         super(numero, nimi, lukija, tiedosto, tallennetutListat);
     }
 

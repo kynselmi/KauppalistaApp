@@ -11,7 +11,7 @@ import kauppalistapp.apurit.TiedostonLukija;
 import kauppalistapp.apurit.Lukija;
 import java.util.List;
 import java.util.ArrayList;
-import kauppalistapp.logiikka.Lista;
+import kauppalistapp.logiikka.Ostoslista;
 import Testiapu.SyoteJaTulostusApuri;
 
 public class JarjestaTuotteitaTest {
@@ -19,7 +19,7 @@ public class JarjestaTuotteitaTest {
     private Tiedosto tuoteListaTesti;
     private Komento komento;
     private Lukija lukija;
-    private List<Lista> tallennetutListat;
+    private Tiedosto tallennetutListatTiedosto;
     private SyoteJaTulostusApuri SJTApuri;
     private TiedostonLukija tl;
 
@@ -38,8 +38,8 @@ public class JarjestaTuotteitaTest {
     public void setUp() {
         this.tuoteListaTesti = new Tiedosto("TuotteetTesti");
         this.lukija = new Lukija();
-        this.tallennetutListat = new ArrayList<Lista>();
-        this.komento = new JarjestaTuotteita(1, "Testi", this.lukija, this.tuoteListaTesti, this.tallennetutListat);
+        this.tallennetutListatTiedosto = new Tiedosto("TallennetutListatTesti");
+        this.komento = new JarjestaTuotteita(1, "Testi", this.lukija, this.tuoteListaTesti, this.tallennetutListatTiedosto);
         this.SJTApuri = new SyoteJaTulostusApuri();
         this.tl = new TiedostonLukija();
     }

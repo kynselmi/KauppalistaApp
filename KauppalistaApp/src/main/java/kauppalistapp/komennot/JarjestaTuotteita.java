@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.ArrayList;
 import kauppalistapp.apurit.ListanJarjestaja;
-import kauppalistapp.logiikka.Lista;
+import kauppalistapp.logiikka.Ostoslista;
 import kauppalistapp.logiikka.Tiedosto;
 
 /**
@@ -23,7 +23,7 @@ public class JarjestaTuotteita extends Komento {
      * @param tiedosto Tallennetut Tuotteet
      * @param tallennetutListat Käyttäjän luomat tallennetut listat
      */
-    public JarjestaTuotteita(int numero, String nimi, Lukija lukija, Tiedosto tiedosto, List<Lista> tallennetutListat) {
+    public JarjestaTuotteita(int numero, String nimi, Lukija lukija, Tiedosto tiedosto, List<Ostoslista> tallennetutListat) {
         super(numero, nimi, lukija, tiedosto, tallennetutListat);
     }
 

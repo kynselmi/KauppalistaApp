@@ -20,7 +20,7 @@ public class LisaaTuote extends Komento {
      * @param tiedosto Tallennetut Tuotteet
      * @param tallennetutListat Käyttäjän luomat tallennetut listat
      */
-    public LisaaTuote(int numero, String nimi, Lukija lukija, Tiedosto tiedosto, List<Lista> tallennetutListat) {
+    public LisaaTuote(int numero, String nimi, Lukija lukija, Tiedosto tiedosto, List<Ostoslista> tallennetutListat) {
         super(numero, nimi, lukija, tiedosto, tallennetutListat);
     }
 

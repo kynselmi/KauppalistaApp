@@ -1,7 +1,6 @@
 package kauppalistapp.apurit;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
@@ -16,6 +15,7 @@ public class TiedostonLukija {
 
     /**
      * Tarkistaa onko tiedostossa tekstiä
+     *
      * @param tiedosto luettava tiedosto
      * @return true, jos tiedostossa on sisaltoa, muuten false.
      */
@@ -30,6 +30,7 @@ public class TiedostonLukija {
 
     /**
      * Lukee annetun tiedoston
+     *
      * @param tiedosto Luettava tiedosto
      * @return Luettu teksti listamuodossa
      */
@@ -50,6 +51,7 @@ public class TiedostonLukija {
 
     /**
      * Antaa tiedoston rivimäärän
+     *
      * @param tiedosto Luettava tiedosto
      * @return tiedoston rivimäärä
      */
@@ -67,20 +69,24 @@ public class TiedostonLukija {
 
         return riveja;
     }
-    
+
     /**
      * Antaa tiedoston listamuodossa ilman rivi numeroita
+     *
      * @param tiedostonNimi Luettavan tiedoston nimi
-     * @return List-olio, jossa jokainen rivi tiedostosta on yhdellä rivillä taulukossa
+     * @return List-olio, jossa jokainen rivi tiedostosta on yhdellä rivillä
+     * taulukossa
      */
     public List<String> annaListanaIlmanRiviNumeroa(File tiedostonNimi) {
         List<String> trimmattuLista = new ArrayList<String>();
         try {
-            for (String trimmattava : this.lueJaAnnaListana(tiedostonNimi)) {
-            trimmattuLista.add(trimmattava.split("-")[1].trim());
-        }} catch (Exception ex) {
-            
+            for (String trimmattava : this.lueJaAnnaListana(tiedostonNimi)) {  
+                String leikattu = trimmattava.split("-")[1].trim();
+                trimmattuLista.add(leikattu);
+            }
+        } catch (Exception ex) {
         }
+        
         return trimmattuLista;
     }
 }

@@ -7,7 +7,7 @@ import java.util.Objects;
  * @author Kärkkäinen Aleksi
  * @version 0.1
  */
-public class Tuote {
+public class Tuote{
 
     private String nimi;
     private int eurot;
@@ -90,6 +90,8 @@ public class Tuote {
         }
         return true;
     }
+
+
 
 
 }

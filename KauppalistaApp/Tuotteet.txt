@@ -1,4 +1,5 @@
 1 - Kinkku, 30,50e
 2 - Lohi, 11,50e
 3 - Maito, 1,50e
-4 - Zuola, 1,50e
+4 - Mansikat, 7,60e
+5 - Zuola, 1,50e

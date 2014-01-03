@@ -1,9 +1,6 @@
 package kauppalistapp.apurit;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.util.List;
 import java.util.ArrayList;
 import kauppalistapp.logiikka.Tiedosto;
@@ -32,10 +29,6 @@ public class TiedostonKirjoittaja {
      * @param tiedostonNimi kirjoitettavan tiedoston nimi
      */
     public void kirjoitaTiedostoon(List<String> lista, String tiedostonNimi) {
-        //try {
-        //    jarjestysluku = this.tiedostonlukija.riveja(tiedostonNimi) + 1;
-        //} catch (Exception ex) {
-        //}
         this.tiedosto = new Tiedosto(tiedostonNimi);
         ArrayList<String> kirjoitettavatRivit = new ArrayList<String>();
 

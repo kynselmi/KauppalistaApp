@@ -2,10 +2,11 @@ package kauppalistapp.sovellus;
 
 import kauppalistapp.komennot.*;
 import kauppalistapp.apurit.Lukija;
-import kauppalistapp.logiikka.Tiedosto;
-import kauppalistapp.logiikka.Lista;
+import kauppalistapp.logiikka.*;
 import java.util.TreeMap;
 import java.util.ArrayList;
+import java.util.List;
+import kauppalistapp.apurit.TiedostonLukija;
 
 /**
  *
@@ -18,7 +19,7 @@ public class Sovellus {
     private TreeMap<Integer, Komento> komennot;
     private Tiedosto kaytettavaTiedosto;
     private Tiedosto tallennetutListatTiedosto;
-    private ArrayList<Lista> tallennetutListat;
+    private List<Ostoslista> tallennetutListat;
 
 
     /**
@@ -28,8 +29,8 @@ public class Sovellus {
         this.komennot = new TreeMap<Integer, Komento>();
         this.lukija = new Lukija();
         this.kaytettavaTiedosto = new Tiedosto("Tuotteet");
-        this.tallennetutListatTiedosto = new Tiedosto("TallennetutListat");
-        this.tallennetutListat = new ArrayList<Lista>();        
+        this.tallennetutListatTiedosto = new Tiedosto("TallennetutListat");  
+        this.tallennetutListat = new ArrayList<Ostoslista>();
     }
 
     /**
@@ -41,7 +42,7 @@ public class Sovellus {
         
         
         lisaaKomennot();
-        lisaaListat(this.tallennetutListatTiedosto);
+        lisaaListat();
         
         boolean jatkuu = true;
         while (jatkuu) {
@@ -87,14 +88,15 @@ public class Sovellus {
         return this.komennot.keySet().size();
     }
     
-    /**
+        /**
      * Lisaa tallennetut listat taulukkoon
-     * @param tiedosto Tallennetut listat sisaltava tiedosto
      */
-    public void lisaaListat(Tiedosto tiedosto) {
-        for (String listanNimi : this.tallennetutListatTiedosto.annaListana()) {
-            this.tallennetutListat.add(new Lista(listanNimi));
-                    
+    public void lisaaListat() {
+        TiedostonLukija tl = new TiedostonLukija();
+        
+        for (String tallennettuLista : tl.annaListanaIlmanRiviNumeroa(this.tallennetutListatTiedosto.getTiedosto())) {
+            Ostoslista ostoslista = new Tiedosto(tallennettuLista).annaOstosListana();
+            this.tallennetutListat.add(ostoslista);
         }
-    }
+}
 }

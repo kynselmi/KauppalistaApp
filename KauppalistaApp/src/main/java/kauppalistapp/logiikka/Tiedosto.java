@@ -4,7 +4,6 @@ import java.io.File;
 import java.util.List;
 import java.util.ArrayList;
 import kauppalistapp.apurit.*;
-import kauppalistapp.logiikka.Lista;
 
 /**
  *
@@ -56,29 +55,9 @@ public class Tiedosto {
         return tuotelista;
     }
     
-    /**
-     * Antaa Tiedostosta Tuote-olioita sisältävän Lista-olion
-     * @return Lista-olion, jossa Tiedoston tekstimuodossa olevat tuotteet
-     */
-    public Lista annaTuoteListana() {
-        Lista tuoteLista = new Lista("Blaablaa");
-        Tuote lisattavaTuote;
-        for (String tuote : this.annaListana()) {            
-            String[] tuoteHajotettuna = tuote.split(",");
-            String nimi = tuoteHajotettuna[0].trim();
-            try {
-                int eurot = Integer.parseInt(tuoteHajotettuna[1].trim());
-                int sentit = Integer.parseInt(tuoteHajotettuna[2].trim());
-                lisattavaTuote = new Tuote(nimi, eurot, sentit);
-            } catch (Exception ex) {
-                lisattavaTuote = new Tuote(nimi);
-            }
-            tuoteLista.lisaaListalle(lisattavaTuote);
-        }
-        return tuoteLista;
-    }
-    
-   
-    
-    
+    public Ostoslista annaOstosListana() {
+        Ostoslista palautettava = new Ostoslista(getNimi());
+        palautettava.lisaaOstoksiaListasta(annaListana());
+        return palautettava;
+    }       
 }

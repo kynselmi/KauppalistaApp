@@ -21,7 +21,7 @@ public class EtsiTuoteTest {
     private Lukija lukija;
     private Komento komento;
     private Tiedosto tallennetutTuotteetTesti;
-    private List<Lista> tallennetutListat;
+    private List<Ostoslista> tallennetutListat;
 
     public EtsiTuoteTest() {
     }
@@ -38,7 +38,7 @@ public class EtsiTuoteTest {
     public void setUp() {
         this.lukija = new Lukija();
         this.SJTApuri = new SyoteJaTulostusApuri();
-        this.tallennetutListat = new ArrayList<Lista>();
+        this.tallennetutListat = new ArrayList<Ostoslista>();
         this.tallennetutTuotteetTesti = new Tiedosto("TuotelistaTestaus");
     }
 

@@ -1,8 +1,9 @@
 
 package kauppalistapp.komennot;
+import java.util.ArrayList;
 import kauppalistapp.apurit.*;
 import kauppalistapp.logiikka.Tiedosto;
-import kauppalistapp.logiikka.Lista;
+import kauppalistapp.logiikka.Ostoslista;
 import java.util.List;
 
 /**
@@ -33,7 +34,7 @@ public abstract class Komento {
     /**
      * Käyttäjän tallentamat listat 
      */
-    protected List<Lista> tallennetutListat;
+    protected List<Ostoslista> tallennetutListat;
     
     /**
      * Komento-luokan konstruktori
@@ -43,7 +44,7 @@ public abstract class Komento {
      * @param tiedosto Tallennetut Tuotteet
      * @param tallennetutListat Käyttäjän luomat tallennetut listat
      */
-    public Komento(int numero, String nimi, Lukija lukija, Tiedosto tiedosto, List<Lista> tallennetutListat) {
+    public Komento(int numero, String nimi, Lukija lukija, Tiedosto tiedosto, List<Ostoslista> tallennetutListat) {
         this.numero = numero;
         this.nimi = nimi;
         this.lukija = lukija;
