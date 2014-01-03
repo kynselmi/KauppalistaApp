@@ -9,6 +9,7 @@ import java.util.LinkedHashMap;
  *
  * @author Kärkkäinen Aleksi
  * @version 0.1
+ * Ostoksista oman olion (ostos sisältää tuotteen ja kappalemäärän mitä ostetaan)
  */
 public class Lista {
 
