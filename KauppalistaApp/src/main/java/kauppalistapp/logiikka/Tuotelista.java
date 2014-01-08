@@ -29,7 +29,7 @@ public class Tuotelista{
     }
     
     public void poistaTuote(int riviNro) {
-        this.tuoteLista.remove(riviNro);
+        this.tuoteLista.remove(riviNro-1);
     }
     
     public List<String> annaListana() {
@@ -93,6 +93,7 @@ public class Tuotelista{
     }
     
     public void jarjestaAakkosjarjestykseenLaskevasti() {
+        jarjestaAakkosjarjestykseenNousevasti();
         Collections.reverse(this.tuoteLista);
     }
 }

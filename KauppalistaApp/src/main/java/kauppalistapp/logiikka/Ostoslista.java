@@ -23,26 +23,13 @@ public class Ostoslista implements Comparable<Ostoslista> {
     public void lisaaOstos(Ostos ostos) {
         boolean onkoJoListalla = false;
         for (Ostos listalla : this.ostoslista) {
-            if (listalla.getTuote().equals(ostos.getTuote())) {
-                listalla.lisaaMaaraaYhdella();
+            if (listalla.getTuote().compareTo(ostos.getTuote()) == 0) {
+                listalla.lisaaMaaraa(ostos.getMaara());
                 onkoJoListalla = true;
             }
         }
         if (!onkoJoListalla) {
             this.ostoslista.add(ostos);
-        }
-    }
-
-    public void lisaaOstoksiaListasta(List<String> lista) {
-        for (String lisattava : lista) {
-            String[] leikattu = lisattava.split("#");
-            lisaaOstos(new Ostos(new Tuote(leikattu[0], Integer.parseInt(leikattu[1].split(",")[0]), Integer.parseInt(leikattu[1].split(",")[1])), 1));
-        }
-    }
-    
-    public void lisaaOstoksiaListastaTuotteita(List<Tuote> lista) {
-        for (Tuote listalla : lista) {
-            this.ostoslista.add(new Ostos(listalla, 1));
         }
     }
 
@@ -54,23 +41,6 @@ public class Ostoslista implements Comparable<Ostoslista> {
         return tuotteita;
     }
 
-    public Ostos annaOstosRivilta(int rivi) {
-        return this.ostoslista.get(rivi - 1);
-    }
-
-    public boolean loytyykoRivia(int rivi) {
-        try {
-            this.ostoslista.get(rivi - 1);
-        } catch (Exception ex) {
-            return false;
-        }
-        return true;
-    }
-
-    public int montakoRivia() {
-        return this.ostoslista.size();
-    }
-
     public List<String> annaListana() {
         List<String> lista = new ArrayList<String>();
         for (Ostos ostos : this.ostoslista) {
@@ -78,28 +48,23 @@ public class Ostoslista implements Comparable<Ostoslista> {
         }
         return lista;
     }
-    
+
     public String kokonaisHinta() {
         int eurot = 0;
         int sentit = 0;
         for (Ostos listalla : this.ostoslista) {
-            eurot += listalla.getTuote().getEurot()*listalla.getMaara();
-            sentit += listalla.getTuote().getSentit()*listalla.getMaara(); 
+            eurot += listalla.getTuote().getEurot() * listalla.getMaara();
+            sentit += listalla.getTuote().getSentit() * listalla.getMaara();
         }
-        eurot += sentit/100;
-        sentit = sentit%100;
-        
+        eurot += sentit / 100;
+        sentit = sentit % 100;
+
         if (sentit > 10) {
             return eurot + "," + sentit + "e";
-        }
-        else {
+        } else {
             return eurot + ",0" + sentit + "e";
         }
-        
-    }
-    
-    public void jarjestaHinnanMukaanLaskevasti() {
-        
+
     }
 
     @Override
@@ -111,21 +76,16 @@ public class Ostoslista implements Comparable<Ostoslista> {
         return palautettava;
     }
 
-    public String toStringIlmanMaaraa() {
-        String palautettava = "";
-        for (Ostos ostos : this.ostoslista) {
-            palautettava += ostos.toStringIlmanMaaraa() + "\n";
-        }
-        return palautettava;
-    }
-
     public String getNimi() {
         return nimi;
+    }
+
+    public ArrayList<Ostos> getOstoslista() {
+        return ostoslista;
     }
 
     @Override
     public int compareTo(Ostoslista ostoslista) {
         return this.nimi.hashCode() - ostoslista.getNimi().hashCode();
     }
-    
 }

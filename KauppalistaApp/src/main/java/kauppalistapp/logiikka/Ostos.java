@@ -20,6 +20,10 @@ public class Ostos implements Comparable<Ostos> {
         return tuote;
     }
 
+    public void lisaaMaaraa(int lisays) {
+        this.maara += lisays;
+    }
+
     public int getMaara() {
         return maara;
     }
@@ -45,10 +49,5 @@ public class Ostos implements Comparable<Ostos> {
         }
         palautettava += this.tuote.toString();
         return palautettava;
-    }
-    
-    public String toStringIlmanMaaraa() {
-        return tuote.toString();        
-    }
-    
+    }    
 }

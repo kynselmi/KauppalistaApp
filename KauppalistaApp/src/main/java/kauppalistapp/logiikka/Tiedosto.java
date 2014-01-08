@@ -31,4 +31,8 @@ public class Tiedosto {
     public String getNimi() {
         return nimi;
     }       
+
+    public void setTiedosto(File tiedosto) {
+        this.tiedosto = tiedosto;
+    }
 }

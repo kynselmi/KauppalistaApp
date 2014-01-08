@@ -33,6 +33,7 @@ public class TiedostonKirjoittajaTest {
 
     @Test
     public void uuteenTiedostoonKirjoittaminenToimii() {
+        this.tk.tyhjennaTiedosto(this.tiedosto);
         List<String> lista = new ArrayList<String>();
         lista.add("testi");
         this.tk.kirjoitaTiedostoon(lista, this.tiedosto);

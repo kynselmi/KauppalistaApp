@@ -1,5 +1,6 @@
 1@CD#0,0
 2@Coca-Cola#2,85
 3@Jauheliha#3,10
-4@Lonkero#2,50
-5@Maito#3,0
+4@Kananmunat#4,50
+5@Lonkero#2,50
+6@Maito#3,0

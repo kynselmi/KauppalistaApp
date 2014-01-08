@@ -30,7 +30,7 @@ public class PoistaTuote extends Komento {
         int poistettavanRivi = super.lukija.lueInteger("Syota poistettavan tuotteen rivinumero: ");
         List<String> lista = super.tiedostonLukija.annaListanaIlmanRiviNumeroa(super.tallennetutTuotteet.getTiedosto());
         lista.remove(poistettavanRivi-1);
-        super.tallennetutTuotteet.poistaTuote(poistettavanRivi-1);
+        super.tallennetutTuotteet.poistaTuote(poistettavanRivi);
         super.tiedostonKirjoittaja.tyhjennaTiedosto(super.tallennetutTuotteet.getTiedosto());
         super.tiedostonKirjoittaja.kirjoitaTiedostoon(lista, super.tallennetutTuotteet.getTiedosto());
         return true;
