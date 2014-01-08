@@ -12,6 +12,10 @@ import kauppalistapp.logiikka.Tuotelista;
  *
  * @author Kärkkäinen Aleksi
  * @version 0.1
+ * 
+ * Ohjelman komento
+ * 
+ * Jokaisella komennolla on jokin toiminto.
  */
 public abstract class Komento implements IO {
     
@@ -72,6 +76,12 @@ public abstract class Komento implements IO {
  */
     public abstract boolean suorita();
     
+    /**
+     *
+     * IO-rajapinnan tulostuksen implementaatio
+     * 
+     * @param teksti tulostettava asia
+     */
     @Override
     public void tulostaTeksti(Object teksti) {
         System.out.println(teksti);

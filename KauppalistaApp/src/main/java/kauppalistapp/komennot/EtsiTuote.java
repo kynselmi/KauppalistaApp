@@ -11,6 +11,8 @@ import kauppalistapp.logiikka.Tuotelista;
 /**
  * @author Kärkkäinen Aleksi
  * @version 0.1
+ * 
+ * Etsii Tuotteen Tuotelistalta
  */
 public class EtsiTuote extends Komento {
     

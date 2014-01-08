@@ -10,6 +10,8 @@ import kauppalistapp.logiikka.Tuotelista;
  *
  * @author Kärkkäinen Aleksi
  * @version 0.1
+ * 
+ * Tulostaa Tuotelitsaan tallennetut Tuotteet
  */
 public class TulostaTuotteet extends Komento {
     

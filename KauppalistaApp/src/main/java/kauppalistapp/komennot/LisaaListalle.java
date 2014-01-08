@@ -13,6 +13,8 @@ import kauppalistapp.kayttoliittyma.Sovellus;
  *
  * @author Kärkkäinen Aleksi
  * @version 0.1
+ * 
+ * Lisää tallennetulle tai tallennettavalle Ostoslistalle Ostoksia
  */
 public class LisaaListalle extends Komento {
 

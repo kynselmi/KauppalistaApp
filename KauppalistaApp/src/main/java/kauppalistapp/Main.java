@@ -10,7 +10,6 @@ import kauppalistapp.kayttoliittyma.Sovellus;
  */
 public class Main {
 
-
     public static void main(String[] args) {
         new Sovellus().kaynnista();
              

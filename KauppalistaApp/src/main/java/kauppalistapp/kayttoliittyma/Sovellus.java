@@ -12,6 +12,8 @@ import kauppalistapp.apurit.TiedostonLukija;
  *
  * @author Kärkkäinen Aleksi
  * @version 0.1
+ * 
+ * Ohjelman suoritus tapahtuu tässä luokassa
  */
 public class Sovellus implements IO {
 
@@ -106,6 +108,12 @@ public class Sovellus implements IO {
         }
     }
 
+    /**
+     * 
+     * Sovellus-luokan implementaatio rajapinnan IO-metodista
+     *
+     * @param teksti tulostettava asia
+     */
     @Override
     public void tulostaTeksti(Object teksti) {
         System.out.println(teksti);

@@ -14,6 +14,8 @@ import kauppalistapp.logiikka.Tuote;
  *
  * @author Kärkkäinen Aleksi
  * @version 0.1
+ * 
+ * Lukee Tiedosto-olion tekstitiedostosta tekstiä
  */
 public class TiedostonLukija {
 
@@ -93,6 +95,12 @@ public class TiedostonLukija {
         return trimmattuLista;
     }
     
+    /**
+     * Antaa tallennetusta Tiedosto-oliosta tekstimuotoisen esityksen ja muuntaa sen listaksi Tuotteita
+     *
+     * @param tiedosto Tiedosto, jossa haluttu lista Tuotteita Stringinä
+     * @return Lista Tuote-olioita
+     */
     public List<Tuote> annaTuoteListana(Tiedosto tiedosto) {
         List<Tuote> tuoteLista = new ArrayList<Tuote>();
         for (String listalla : this.annaListanaIlmanRiviNumeroa(tiedosto)) {
@@ -106,6 +114,13 @@ public class TiedostonLukija {
         return tuoteLista;
     }
     
+    /**
+     * Lukee Tiedosto-oliosta tallennetut Ostos-oliot ja antaa ne Ostoslistana
+     * 
+     *
+     * @param tiedosto Tiedosto, jossa haluttu tekstitiedosto Ostoslistaksi muunnettavaksi
+     * @return Ostoslista muodossa lista Ostos-olioita
+     */
     public Ostoslista annaOstoslistana(Tiedosto tiedosto) {
         Ostoslista ostoslista = new Ostoslista(tiedosto.getNimi());
         for (String listalla : this.lueJaAnnaListana(tiedosto)) {

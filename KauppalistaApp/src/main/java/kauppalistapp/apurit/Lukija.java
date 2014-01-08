@@ -6,6 +6,8 @@ import java.util.Scanner;
  *
  * @author Kärkkäinen Aleksi
  * @version 0.1
+ * 
+ * Lukija kapseloi sisäänsä Scanner-olion, joka lukee käyttäjän antaman syötteen
  */
 public class Lukija {
 

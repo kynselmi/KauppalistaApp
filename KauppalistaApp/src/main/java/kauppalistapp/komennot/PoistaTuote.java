@@ -10,6 +10,8 @@ import kauppalistapp.logiikka.Tuotelista;
  *
  * @author Kärkkäinen Aleksi
  * @version 0.1
+ * 
+ * Poistaa tuotteen Tuotelistalta
  */
 public class PoistaTuote extends Komento {
 

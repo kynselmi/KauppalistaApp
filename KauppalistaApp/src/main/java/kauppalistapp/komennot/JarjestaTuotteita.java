@@ -9,6 +9,8 @@ import kauppalistapp.logiikka.Tuotelista;
  *
  * @author Kärkkäinen Aleksi
  * @version 0.1
+ * 
+ * Jarjestaa Tuotelistan tuotteet
  */
 public class JarjestaTuotteita extends Komento {
 

@@ -9,6 +9,8 @@ import java.util.List;
  *
  * @author Kärkkäinen Aleksi
  * @version 0.1
+ * 
+ * Lisää Tuotelistalle Tuote-olioita
  */
 public class LisaaTuote extends Komento {
 

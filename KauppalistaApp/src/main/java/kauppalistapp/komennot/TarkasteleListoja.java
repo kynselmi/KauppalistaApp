@@ -8,9 +8,21 @@ import kauppalistapp.logiikka.Tuotelista;
 /**
  *
  * @author Aleksi
+ * @ver 0.4
+ * 
+ * Tulostaa tallennettuja Ostoslistoja tarkastelua varten
  */
 public class TarkasteleListoja extends Komento {
 
+    /**
+     * TarkateleListoja-olion konstruktori
+     *
+     * @param numero Komennon numero
+     * @param nimi Komennon nimi
+     * @param lukija Lukija-tyyppiä oleva scanner-lukija
+     * @param tallennetutTuotteet Tallennetut Tuotteet
+     * @param tallennetutListat Käyttäjän luomat tallennetut listat
+     */
     public TarkasteleListoja(int numero, String nimi, Lukija lukija, Tuotelista tallennetutTuotteet, List<Ostoslista> tallennetutListat) {
         super(numero, nimi, lukija, tallennetutTuotteet, tallennetutListat);
 

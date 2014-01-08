@@ -13,6 +13,9 @@ import kauppalistapp.logiikka.Tiedosto;
  *
  * @author Kärkkäinen Aleksi
  * @version 0.1
+ * 
+ * TiedostonKirjoittaja kapseloi sisäänsä FileWriter -olion, jolla voi kirjoittaa tekstitiedostoon.
+ * Sisältää myös tiedostonlukijan jo tallennetun tiedon keräämiseen kirjoitettavaksi.
  */
 public class TiedostonKirjoittaja {
 
@@ -30,7 +33,7 @@ public class TiedostonKirjoittaja {
      * Kirjoittaa tekstitiedostoon
      *
      * @param kirjoitettavaLista tulostettava teksti listamuodossa
-     * @param tiedostonNimi kirjoitettavan tiedoston nimi
+     * @param tiedosto Tiedosto, johon kirjoitettaan
      */
     public void kirjoitaTiedostoon(List<String> kirjoitettavaLista, Tiedosto tiedosto) {
         ArrayList<String> kirjoitettavatRivit = new ArrayList<String>();
@@ -82,6 +85,13 @@ public class TiedostonKirjoittaja {
         }
     }
 
+    /**
+     * Kirjoittaa Tiedosto-olioon Ostoslista-oliosta
+     *
+     * @param ostoslista Ostoslista-olio josta kirjoitetaan
+     * @param tiedosto Tiedosto-olio johon kirjoitetaan
+     * @throws IOException
+     */
     public void kirjoitaTiedostoonOstoslista(Ostoslista ostoslista, Tiedosto tiedosto) throws IOException {
         List<String> kirjoitettava = new ArrayList<String>();
         for (String listalla : ostoslista.annaListana()) {
@@ -102,7 +112,7 @@ public class TiedostonKirjoittaja {
     /**
      * Tyhjentaa tekstitiedoston
      *
-     * @param tiedostonNimi Tyhjennettavan tiedoston nimi
+     * @param tiedosto 
      */
     public void tyhjennaTiedosto(Tiedosto tiedosto) {
         try {

@@ -9,17 +9,29 @@ import java.util.Objects;
  *
  * @author Kärkkäinen Aleksi
  * @version 0.1
+ * 
+ * Ostoslista sisältää Ostos-olioita ja nimen
  */
 public class Ostoslista implements Comparable<Ostoslista> {
 
     private String nimi;
     private ArrayList<Ostos> ostoslista;
 
+    /**
+     * Ostoslista-olion konstruktori
+     *
+     * @param nimi Ostoslistan nimi
+     */
     public Ostoslista(String nimi) {
         this.nimi = nimi;
         this.ostoslista = new ArrayList<Ostos>();
     }
 
+    /**
+     * Lisaa Ostos-olion Ostoslistalle
+     *
+     * @param ostos lisattava ostos
+     */
     public void lisaaOstos(Ostos ostos) {
         boolean onkoJoListalla = false;
         for (Ostos listalla : this.ostoslista) {
@@ -33,6 +45,11 @@ public class Ostoslista implements Comparable<Ostoslista> {
         }
     }
 
+    /**
+     * Antaa Ostoslistasta Tuote-olioiden määrän
+     *
+     * @return Tuote-olioiden määrä
+     */
     public int annaTuotteidenMaara() {
         int tuotteita = 0;
         for (Ostos ostos : this.ostoslista) {
@@ -41,6 +58,12 @@ public class Ostoslista implements Comparable<Ostoslista> {
         return tuotteita;
     }
 
+    /**
+     * Antaa Ostoslistan Listana String-olioita valmiina annettavaksi TiedostonKirjoittajalle
+     *
+     * @return lista String-olioita
+     * @see TiedostonKirjoittaja
+     */
     public List<String> annaListana() {
         List<String> lista = new ArrayList<String>();
         for (Ostos ostos : this.ostoslista) {
@@ -49,6 +72,11 @@ public class Ostoslista implements Comparable<Ostoslista> {
         return lista;
     }
 
+    /**
+     * Antaa Ostoslistan kokonaishinnan 
+     *
+     * @return hinta
+     */
     public String kokonaisHinta() {
         int eurot = 0;
         int sentit = 0;
@@ -75,6 +103,7 @@ public class Ostoslista implements Comparable<Ostoslista> {
         }
         return palautettava;
     }
+
 
     public String getNimi() {
         return nimi;
