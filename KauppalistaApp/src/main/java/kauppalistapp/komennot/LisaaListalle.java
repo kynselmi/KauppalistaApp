@@ -1,10 +1,13 @@
 package kauppalistapp.komennot;
 
+import java.io.IOException;
 import kauppalistapp.apurit.*;
 import kauppalistapp.logiikka.*;
 import java.util.List;
 import java.util.ArrayList;
-import kauppalistapp.sovellus.Sovellus;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import kauppalistapp.kayttoliittyma.Sovellus;
 
 /**
  *
@@ -13,20 +16,18 @@ import kauppalistapp.sovellus.Sovellus;
  */
 public class LisaaListalle extends Komento {
 
-    private List<Ostoslista> tallennetutListat;
-
     /**
      * LisaaListalle-olion konstruktori
      *
      * @param numero Komennon numero
      * @param nimi Komennon nimi
      * @param lukija Lukija-tyyppiä oleva scanner-lukija
-     * @param tiedosto Tallennetut Tuotteet
+     * @param tallennetutTuotteet Tallennetut Tuotteet
      * @param tallennetutListat Käyttäjän luomat tallennetut listat
      */
-    public LisaaListalle(int numero, String nimi, Lukija lukija, Tiedosto tiedosto, List<Ostoslista> tallennetutListat) {
-        super(numero, nimi, lukija, tiedosto, tallennetutListat);
-        this.tallennetutListat = new ArrayList<Ostoslista>();
+    public LisaaListalle(int numero, String nimi, Lukija lukija, Tuotelista tallennetutTuotteet, List<Ostoslista> tallennetutListat) {
+        super(numero, nimi, lukija, tallennetutTuotteet, tallennetutListat);
+        this.tiedostonLukija = new TiedostonLukija();
     }
 
     @Override
@@ -38,8 +39,9 @@ public class LisaaListalle extends Komento {
         System.out.println("");
 
         boolean onkoListalla = false;
-        for (Ostoslista ostoslista : this.tallennetutListat) {
+        for (Ostoslista ostoslista : super.tallennetutListat) {
             if (ostoslista.getNimi().equals(listanNimi)) {
+                System.out.println("listalla olevat nimet ostolistat: " + ostoslista.getNimi());
                 uusiLista = ostoslista;
                 onkoListalla = true;
                 break;
@@ -48,24 +50,27 @@ public class LisaaListalle extends Komento {
 
         if (!onkoListalla) {
             uusiLista = new Ostoslista(listanNimi);
-            this.tallennetutListat.add(uusiLista);
         }
 
-        Ostoslista tuoteLista = super.tiedosto.annaOstosListana();
+
         while (true) {
             System.out.println("Listalla " + uusiLista.getNimi() + " on " + uusiLista.annaTuotteidenMaara() + " tuotetta:");
             System.out.println(uusiLista);
             System.out.println("");
 
             System.out.println("Lisättävät tuotteet:");
-            System.out.println(tuoteLista.toStringIlmanMaaraa());
+            System.out.println(super.tallennetutTuotteet);
+
 
             int lisattavanRivinumero = super.lukija.lueInteger("Anna lisattavan tuotteen rivinumero (kirjain lopettaa): ");
+
             if (lisattavanRivinumero == -1) {
                 break;
             }
-            if (tuoteLista.loytyykoRivia(lisattavanRivinumero)) {
-                uusiLista.lisaaOstos(tuoteLista.annaOstosRivilta(lisattavanRivinumero));
+            if (super.tallennetutTuotteet.annaKoko() >= lisattavanRivinumero) {
+                Tuote lisattava = super.tallennetutTuotteet.annaRivi(lisattavanRivinumero);
+                Ostos ostos = new Ostos(lisattava, 1);
+                uusiLista.lisaaOstos(ostos);
             } else {
                 System.out.println("Listalla ei ole antamaasi riviä");
             }
@@ -75,14 +80,19 @@ public class LisaaListalle extends Komento {
             this.tallennetutListat.add(uusiLista);
 
             List<String> tallennetutListatNimet = new ArrayList<String>();
+            int i = 0;
             for (Ostoslista ostoslista : this.tallennetutListat) {
                 tallennetutListatNimet.add(ostoslista.getNimi());
+                i++;
             }
-
-            super.tiedostonKirjoittaja.kirjoitaTiedostoon(tallennetutListatNimet, "TallennetutListat");
+            Tiedosto tallennetutListat = new Tiedosto("TallennetutListat");
+            super.tiedostonKirjoittaja.tyhjennaTiedosto(tallennetutListat);
+            super.tiedostonKirjoittaja.kirjoitaTiedostoon(tallennetutListatNimet, tallennetutListat);
         }
-
-        this.tiedostonKirjoittaja.kirjoitaTiedostoon(uusiLista.annaListana(), listanNimi);
+        try {
+            this.tiedostonKirjoittaja.kirjoitaTiedostoonOstoslista(uusiLista, new Tiedosto(listanNimi));
+        } catch (IOException ex) {
+        }
         return true;
     }
 
@@ -92,7 +102,7 @@ public class LisaaListalle extends Komento {
     public void tulostaListat() {
         for (Ostoslista ostoslista : this.tallennetutListat) {
             System.out.println(ostoslista.getNimi());
+            System.out.println("");
         }
-        System.out.println("");
     }
 }

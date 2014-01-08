@@ -48,38 +48,34 @@ public class TiedostonKirjoittajaTest {
 
     @Test
     public void uuteenTiedostoonKirjoittaminenToimii() {
-        ArrayList<String> lista = new ArrayList<String>();
+        List<String> lista = new ArrayList<String>();
         lista.add("testi");
-        this.tk.kirjoitaTiedostoon(lista, this.tiedosto.getNimi());
-        assertEquals("1 - testi", this.tl.lueJaAnnaListana(this.tiedosto.getTiedosto()).get(0));
+        this.tk.kirjoitaTiedostoon(lista, this.tiedosto);
+        assertEquals("1@testi", this.tl.lueJaAnnaListana(this.tiedosto).get(0));
     }
 
     @Test
     public void vanhaanTiedostoonKirjoitetaanOikein() {
-        this.tk.tyhjennaTiedosto("testi2.txt");
+        this.tk.tyhjennaTiedosto(new Tiedosto("testi2"));
         ArrayList<String> vanhaTavara = new ArrayList<String>();        
         vanhaTavara.add("Testi");
         vanhaTavara.add("Test");
         vanhaTavara.add("T");
         
-        this.tiedosto = new Tiedosto("testi2.txt");
-        this.tk.kirjoitaTiedostoon(vanhaTavara, "testi2.txt");        
+        this.tiedosto = new Tiedosto("testi2");
+        this.tk.kirjoitaTiedostoon(vanhaTavara, new Tiedosto("testi2"));        
         
-        ArrayList<String> lista = new ArrayList<String>();
+        List<String> lista = new ArrayList<String>();
         lista.add("lisattavaa");
-        String tiedostonNimi = "testi2.txt";
-        this.tk.kirjoitaTiedostoon(lista, tiedostonNimi);
-        List<String> ListaTiedostosta = this.tl.lueJaAnnaListana(this.tiedosto.getTiedosto());
+        String tiedostonNimi = "testi2";
+        this.tk.kirjoitaTiedostoon(lista, new Tiedosto(tiedostonNimi));
+        List<String> ListaTiedostosta = this.tl.lueJaAnnaListana(this.tiedosto);
         assertEquals("1 - Testi", ListaTiedostosta.get(0));
         assertEquals("2 - Test", ListaTiedostosta.get(1));
         assertEquals("3 - T", ListaTiedostosta.get(2));
         assertEquals("4 - lisattavaa", ListaTiedostosta.get(3));
     }
     
-    @Test
-    public void eiKaaduJosTiedostoaEiLoydyTyhjennettaessa() {
-        this.tk.tyhjennaTiedosto("tataeioleolemassa.txt");        
-    }
     
     @Test
     public void tyhjentaaTiedoston() {
@@ -87,7 +83,7 @@ public class TiedostonKirjoittajaTest {
        List<String> lisattava = new ArrayList<String>();
        lisattava.add("tyhjennettava");
        
-       this.tk.kirjoitaTiedostoon(lisattava, this.tiedosto.getNimi());
+       this.tk.kirjoitaTiedostoon(lisattava, this.tiedosto);
     }
     
 

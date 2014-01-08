@@ -1,4 +1,4 @@
-package kauppalistapp.sovellus;
+package kauppalistapp.kayttoliittyma;
 
 import kauppalistapp.komennot.*;
 import kauppalistapp.apurit.Lukija;
@@ -17,10 +17,8 @@ public class Sovellus {
 
     private Lukija lukija;
     private TreeMap<Integer, Komento> komennot;
-    private Tiedosto kaytettavaTiedosto;
-    private Tiedosto tallennetutListatTiedosto;
+    private Tuotelista tallennetutTuotteet;
     private List<Ostoslista> tallennetutListat;
-
 
     /**
      * Sovellus-olion konstruktori
@@ -28,8 +26,7 @@ public class Sovellus {
     public Sovellus() {
         this.komennot = new TreeMap<Integer, Komento>();
         this.lukija = new Lukija();
-        this.kaytettavaTiedosto = new Tiedosto("Tuotteet");
-        this.tallennetutListatTiedosto = new Tiedosto("TallennetutListat");  
+        this.tallennetutTuotteet = new Tuotelista();
         this.tallennetutListat = new ArrayList<Ostoslista>();
     }
 
@@ -39,21 +36,22 @@ public class Sovellus {
     public void kaynnista() {
         System.out.println("*****KauppalistaApp*****");
         System.out.println("");
-        
-        
-        lisaaKomennot();
+
+        lisaaTuotteet();
         lisaaListat();
+        lisaaKomennot();
         
+
         boolean jatkuu = true;
         while (jatkuu) {
             System.out.println("_________________________");
             System.out.println("Komennot:");
             System.out.println("");
             tulostaKomennot();
-            System.out.print("Anna komento (1-" + this.komentojenMaara() + "): ");           
+            System.out.print("Anna komento (1-" + this.komentojenMaara() + "): ");
             int komento = this.lukija.lueInteger();
             System.out.println("");
-            jatkuu = this.komennot.get(komento).suorita();            
+            jatkuu = this.komennot.get(komento).suorita();
         }
 
     }
@@ -62,12 +60,12 @@ public class Sovellus {
      * Lisää sovelluksen komennot
      */
     public void lisaaKomennot() {
-        this.komennot.put(1, new TulostaTuotteet(1, "Tulosta tuotteet", this.lukija, this.kaytettavaTiedosto, this.tallennetutListat));
-        this.komennot.put(2, new LisaaTuote(2, "Lisaa tuote", this.lukija, this.kaytettavaTiedosto, this.tallennetutListat));
-        this.komennot.put(3, new PoistaTuote(3, "Poista tuote", this.lukija, this.kaytettavaTiedosto, this.tallennetutListat));
-        this.komennot.put(4, new JarjestaTuotteita(4, "Jarjesta tuotteita", this.lukija, this.kaytettavaTiedosto, this.tallennetutListat));
-        this.komennot.put(5, new EtsiTuote(5, "Etsi tuote", this.lukija, this.kaytettavaTiedosto, this.tallennetutListat));
-        this.komennot.put(6, new LisaaListalle(6, "Lisaa listalle", this.lukija, this.kaytettavaTiedosto, this.tallennetutListat));
+        this.komennot.put(1, new TulostaTuotteet(1, "Tulosta tuotteet", this.lukija, this.tallennetutTuotteet, this.tallennetutListat));
+        this.komennot.put(2, new LisaaTuote(2, "Lisaa tuote", this.lukija, this.tallennetutTuotteet, this.tallennetutListat));
+        this.komennot.put(3, new PoistaTuote(3, "Poista tuote", this.lukija, this.tallennetutTuotteet, this.tallennetutListat));
+        this.komennot.put(4, new JarjestaTuotteita(4, "Jarjesta tuotteita", this.lukija, this.tallennetutTuotteet, this.tallennetutListat));
+        this.komennot.put(5, new EtsiTuote(5, "Etsi tuote", this.lukija, this.tallennetutTuotteet, this.tallennetutListat));
+        this.komennot.put(6, new LisaaListalle(6, "Lisaa listalle", this.lukija, this.tallennetutTuotteet, this.tallennetutListat));
     }
 
     /**
@@ -79,24 +77,31 @@ public class Sovellus {
         }
         System.out.println("¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨");
     }
-    
+
     /**
      * Antaa komentojen maaran
+     *
      * @return komentojen maara
      */
     public int komentojenMaara() {
         return this.komennot.keySet().size();
     }
-    
-        /**
+
+    public void lisaaTuotteet() {
+        TiedostonLukija tl = new TiedostonLukija();
+        for (Tuote listalla : tl.annaTuoteListana(new Tiedosto("Tuotteet"))) {
+            this.tallennetutTuotteet.lisaaTuote(listalla);
+        }
+    }
+
+    /**
      * Lisaa tallennetut listat taulukkoon
      */
     public void lisaaListat() {
         TiedostonLukija tl = new TiedostonLukija();
-        
-        for (String tallennettuLista : tl.annaListanaIlmanRiviNumeroa(this.tallennetutListatTiedosto.getTiedosto())) {
-            Ostoslista ostoslista = new Tiedosto(tallennettuLista).annaOstosListana();
+        for (String tallennettuLista : tl.annaListanaIlmanRiviNumeroa(new Tiedosto("TallennetutListat"))) {
+            Ostoslista ostoslista = tl.annaOstoslistana(new Tiedosto(tallennettuLista));
             this.tallennetutListat.add(ostoslista);
         }
-}
+    }
 }

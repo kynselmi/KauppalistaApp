@@ -24,7 +24,7 @@ public class Lukija {
      * @return luettu teksti
      */
     public String lueTeksti() {
-        String teksti = this.lukija.next();
+        String teksti = this.lukija.nextLine();
         return teksti;
     }
 

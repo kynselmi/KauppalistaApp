@@ -1,0 +1,2 @@
+3#Appelsiinimehu, 1,50e#0,0
+2#Maito, 1,50e#0,0

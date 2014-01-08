@@ -4,6 +4,7 @@ import kauppalistapp.apurit.Lukija;
 import java.util.List;
 import kauppalistapp.logiikka.Ostoslista;
 import kauppalistapp.logiikka.Tiedosto;
+import kauppalistapp.logiikka.Tuotelista;
 
 /**
  *
@@ -17,16 +18,16 @@ public class TulostaTuotteet extends Komento {
      * @param numero Komennon numero
      * @param nimi  Komennon nimi
      * @param lukija Lukija-tyyppiä oleva scanner-lukija
-     * @param tiedosto Tallennetut Tuotteet
+     * @param tallennetutTuotteet Tallennetut Tuotteet
      * @param tallennetutListat Käyttäjän luomat tallennetut listat
      */
-    public TulostaTuotteet(int numero, String nimi, Lukija lukija, Tiedosto tiedosto, List<Ostoslista> tallennetutListat) {
-        super(numero, nimi, lukija, tiedosto, tallennetutListat);
+    public TulostaTuotteet(int numero, String nimi, Lukija lukija, Tuotelista tallennetutTuotteet, List<Ostoslista> tallennetutListat) {
+        super(numero, nimi, lukija, tallennetutTuotteet, tallennetutListat);
     }
 
     @Override
     public boolean suorita() {
-          tulostus(super.tiedostonLukija.lueJaAnnaListana(super.tiedosto.getTiedosto()));
+          System.out.println(super.tallennetutTuotteet.toString());
           return true;
         
     }
@@ -41,6 +42,5 @@ public class TulostaTuotteet extends Komento {
             System.out.println("  " + tuote);
         }
         System.out.println("");
-    }
-    
+    }    
 }

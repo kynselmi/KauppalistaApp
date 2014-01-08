@@ -5,6 +5,7 @@ import kauppalistapp.apurit.*;
 import kauppalistapp.logiikka.Tiedosto;
 import kauppalistapp.logiikka.Ostoslista;
 import java.util.List;
+import kauppalistapp.logiikka.Tuotelista;
 
 /**
  *
@@ -28,9 +29,9 @@ public abstract class Komento {
      */
     protected TiedostonKirjoittaja tiedostonKirjoittaja;
     /**
-     * Tallennetut tuotteet sisältävä Tiedosto-olio
+     * Tallennetut tuotteet tekstitiedostossa sisältävä Tiedosto-olio
      */
-    protected Tiedosto tiedosto;
+    protected Tuotelista tallennetutTuotteet;
     /**
      * Käyttäjän tallentamat listat 
      */
@@ -41,18 +42,17 @@ public abstract class Komento {
      * @param numero Komennon numero
      * @param nimi  Komennon nimi
      * @param lukija Lukija-tyyppiä oleva scanner-lukija
-     * @param tiedosto Tallennetut Tuotteet
+     * @param tallennetutTuotteet Tallennetut Tuotteet
      * @param tallennetutListat Käyttäjän luomat tallennetut listat
      */
-    public Komento(int numero, String nimi, Lukija lukija, Tiedosto tiedosto, List<Ostoslista> tallennetutListat) {
+    public Komento(int numero, String nimi, Lukija lukija, Tuotelista tallennetutTuotteet, List<Ostoslista> tallennetutListat) {
         this.numero = numero;
         this.nimi = nimi;
         this.lukija = lukija;
         this.tiedostonLukija = new TiedostonLukija();
         this.tiedostonKirjoittaja = new TiedostonKirjoittaja();
-        this.tiedosto = tiedosto;
-        this.tallennetutListat = tallennetutListat;
-        
+        this.tallennetutTuotteet = tallennetutTuotteet;
+        this.tallennetutListat = tallennetutListat;        
     }
     
     /**

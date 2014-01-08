@@ -17,16 +17,15 @@ public class LisaaTuote extends Komento {
      * @param numero Komennon numero
      * @param nimi  Komennon nimi
      * @param lukija Lukija-tyyppiä oleva scanner-lukija
-     * @param tiedosto Tallennetut Tuotteet
+     * @param tallennetutTuotteet Tallennetut Tuotteet
      * @param tallennetutListat Käyttäjän luomat tallennetut listat
      */
-    public LisaaTuote(int numero, String nimi, Lukija lukija, Tiedosto tiedosto, List<Ostoslista> tallennetutListat) {
-        super(numero, nimi, lukija, tiedosto, tallennetutListat);
+    public LisaaTuote(int numero, String nimi, Lukija lukija, Tuotelista tallennetutTuotteet, List<Ostoslista> tallennetutListat) {
+        super(numero, nimi, lukija, tallennetutTuotteet, tallennetutListat);
     }
 
     @Override
     public boolean suorita() {
-        int rivinumero = super.tiedostonLukija.riveja(super.tiedosto.getTiedosto());
         ArrayList<String> lista;
         while (true) {
             Tuote tuote;
@@ -42,15 +41,11 @@ public class LisaaTuote extends Komento {
             } else {
                 tuote = new Tuote(nimi, eurot, sentit);
             }
-
-            lista = new ArrayList<String>();
-            lista.add(tuote.toString());
-            super.tiedostonKirjoittaja.kirjoitaTiedostoon(lista, this.tiedosto.getNimi());
-            rivinumero++;
+            super.tallennetutTuotteet.lisaaTuote(tuote);            
         }
+        super.tiedostonKirjoittaja.kirjoitaTiedostoon(super.tallennetutTuotteet.annaListana(), super.tallennetutTuotteet.getTiedosto());
 
         return true;
-
-
+       
     }
 }

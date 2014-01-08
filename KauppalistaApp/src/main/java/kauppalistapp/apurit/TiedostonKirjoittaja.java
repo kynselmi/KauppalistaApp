@@ -1,8 +1,12 @@
 package kauppalistapp.apurit;
 
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import kauppalistapp.logiikka.Ostoslista;
 import kauppalistapp.logiikka.Tiedosto;
 
 /**
@@ -14,7 +18,6 @@ public class TiedostonKirjoittaja {
 
     private FileWriter kirjoittaja;
     private TiedostonLukija tiedostonlukija;
-    private Tiedosto tiedosto;
 
     /**
      * TiedostonKirjoittaja-olion konstruktori
@@ -25,52 +28,85 @@ public class TiedostonKirjoittaja {
 
     /**
      * Kirjoittaa tekstitiedostoon
-     * @param lista tulostettava teksti listamuodossa
+     *
+     * @param kirjoitettavaLista tulostettava teksti listamuodossa
      * @param tiedostonNimi kirjoitettavan tiedoston nimi
      */
-    public void kirjoitaTiedostoon(List<String> lista, String tiedostonNimi) {
-        this.tiedosto = new Tiedosto(tiedostonNimi);
+    public void kirjoitaTiedostoon(List<String> kirjoitettavaLista, Tiedosto tiedosto) {
         ArrayList<String> kirjoitettavatRivit = new ArrayList<String>();
 
-        if (this.tiedostonlukija.onkoSisaltoa(this.tiedosto.getTiedosto())) {
-            List<String> vanhaLista = this.tiedostonlukija.lueJaAnnaListana(this.tiedosto.getTiedosto());
+        if (this.tiedostonlukija.onkoSisaltoa(tiedosto)) {
+            List<String> vanhaLista = this.tiedostonlukija.annaListanaIlmanRiviNumeroa(tiedosto);
             for (String vanhaTieto : vanhaLista) {
                 try {
-                    kirjoitettavatRivit.add(vanhaTieto.split("-")[1].trim());
+                    kirjoitettavatRivit.add(vanhaTieto);
                 } catch (Exception ex) {
                 }
             }
         }
 
-        for (String uusiTieto : lista) {
+        for (String uusiTieto : kirjoitettavaLista) {
             kirjoitettavatRivit.add(uusiTieto);
         }
         try {
-            this.kirjoittaja = new FileWriter(this.tiedosto.getTiedosto());
+            this.kirjoittaja = new FileWriter(tiedosto.getTiedosto());
         } catch (Exception poikkeus) {
         }
+        String kirjoitettavaTeksti = "";
         int riviNumero = 1;
         for (String kirjoitettava : kirjoitettavatRivit) {
-            try {
-                this.kirjoittaja.write(riviNumero + " - " + kirjoitettava + "\n");
-                riviNumero++;
-            } catch (Exception ex) {
+            String[] kirjoitettavaLeikattu = kirjoitettava.split("#");
+            String kirjoitettavaRivi = "";
+            kirjoitettavaRivi += riviNumero;
+
+            kirjoitettavaRivi += "@" + kirjoitettavaLeikattu[0];
+
+
+            if (kirjoitettavaLeikattu.length > 1) {
+                kirjoitettavaRivi += "#" + kirjoitettavaLeikattu[1];
             }
+            if (kirjoitettavaLeikattu.length > 2) {
+                kirjoitettavaRivi += "#" + kirjoitettavaLeikattu[2];
+            }
+            if (kirjoitettavaLeikattu.length > 3) {
+                kirjoitettavaRivi += "#" + kirjoitettavaLeikattu[3];
+            }
+            riviNumero++;
+            kirjoitettavaRivi += "\n";
+            kirjoitettavaTeksti += kirjoitettavaRivi;
         }
         try {
+            this.kirjoittaja.write(kirjoitettavaTeksti);
             this.kirjoittaja.close();
-        } catch (Exception ex) {
+        } catch (IOException ex) {
         }
+    }
+
+    public void kirjoitaTiedostoonOstoslista(Ostoslista ostoslista, Tiedosto tiedosto) throws IOException {
+        List<String> kirjoitettava = new ArrayList<String>();
+        for (String listalla : ostoslista.annaListana()) {
+            kirjoitettava.add(listalla);
+        }
+        
+        tyhjennaTiedosto(tiedosto);
+        
+        this.kirjoittaja = new FileWriter(tiedosto.getTiedosto());
+       
+        for (String kirjoitettavaRivi : kirjoitettava) {
+            this.kirjoittaja.write(kirjoitettavaRivi + "\n");
+        }
+        
+        this.kirjoittaja.close();
     }
 
     /**
      * Tyhjentaa tekstitiedoston
+     *
      * @param tiedostonNimi Tyhjennettavan tiedoston nimi
      */
-    public void tyhjennaTiedosto(String tiedostonNimi) {
-        this.tiedosto = new Tiedosto(tiedostonNimi);
+    public void tyhjennaTiedosto(Tiedosto tiedosto) {
         try {
-            this.kirjoittaja = new FileWriter(this.tiedosto.getTiedosto());
+            this.kirjoittaja = new FileWriter(tiedosto.getTiedosto());
             this.kirjoittaja.write("");
         } catch (Exception ex) {
             System.out.println("Tiedostoa ei löytynyt");

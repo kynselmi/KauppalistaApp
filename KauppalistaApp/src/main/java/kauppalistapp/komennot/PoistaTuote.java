@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 import kauppalistapp.logiikka.Ostoslista;
 import kauppalistapp.logiikka.Tiedosto;
+import kauppalistapp.logiikka.Tuotelista;
 
 /**
  *
@@ -17,20 +18,21 @@ public class PoistaTuote extends Komento {
      * @param numero Komennon numero
      * @param nimi  Komennon nimi
      * @param lukija Lukija-tyyppiä oleva scanner-lukija
-     * @param tiedosto Tallennetut Tuotteet
+     * @param tallennetutTuotteet Tallennetut Tuotteet
      * @param tallennetutListat Käyttäjän luomat tallennetut listat
      */
-    public PoistaTuote(int numero, String nimi, Lukija lukija, Tiedosto tiedosto, List<Ostoslista> tallennetutListat) {
-        super(numero, nimi, lukija, tiedosto, tallennetutListat);
+    public PoistaTuote(int numero, String nimi, Lukija lukija, Tuotelista tallennetutTuotteet, List<Ostoslista> tallennetutListat) {
+        super(numero, nimi, lukija, tallennetutTuotteet, tallennetutListat);
     }
     
     @Override
     public boolean suorita() {
         int poistettavanRivi = super.lukija.lueInteger("Syota poistettavan tuotteen rivinumero: ");
-        List<String> lista = super.tiedostonLukija.annaListanaIlmanRiviNumeroa(super.tiedosto.getTiedosto());
-        lista.remove(poistettavanRivi-1);        
-        super.tiedostonKirjoittaja.tyhjennaTiedosto(this.tiedosto.getNimi());
-        super.tiedostonKirjoittaja.kirjoitaTiedostoon(lista, this.tiedosto.getNimi());
+        List<String> lista = super.tiedostonLukija.annaListanaIlmanRiviNumeroa(super.tallennetutTuotteet.getTiedosto());
+        lista.remove(poistettavanRivi-1);
+        super.tallennetutTuotteet.poistaTuote(poistettavanRivi-1);
+        super.tiedostonKirjoittaja.tyhjennaTiedosto(super.tallennetutTuotteet.getTiedosto());
+        super.tiedostonKirjoittaja.kirjoitaTiedostoon(lista, super.tallennetutTuotteet.getTiedosto());
         return true;
     }
     

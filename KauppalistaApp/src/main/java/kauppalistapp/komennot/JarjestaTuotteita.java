@@ -4,9 +4,9 @@ import kauppalistapp.apurit.*;
 import java.util.Collections;
 import java.util.List;
 import java.util.ArrayList;
-import kauppalistapp.apurit.ListanJarjestaja;
 import kauppalistapp.logiikka.Ostoslista;
 import kauppalistapp.logiikka.Tiedosto;
+import kauppalistapp.logiikka.Tuotelista;
 
 /**
  *
@@ -23,27 +23,25 @@ public class JarjestaTuotteita extends Komento {
      * @param tiedosto Tallennetut Tuotteet
      * @param tallennetutListat Käyttäjän luomat tallennetut listat
      */
-    public JarjestaTuotteita(int numero, String nimi, Lukija lukija, Tiedosto tiedosto, List<Ostoslista> tallennetutListat) {
+    public JarjestaTuotteita(int numero, String nimi, Lukija lukija, Tuotelista tiedosto, List<Ostoslista> tallennetutListat) {
         super(numero, nimi, lukija, tiedosto, tallennetutListat);
     }
 
     @Override
     public boolean suorita() {
         TiedostonKirjoittaja tk = new TiedostonKirjoittaja();
-        System.out.println("1 Aakkosjärjestykseen laskevasti");
-        System.out.println("2 Aakkosjärjestykseen nousevasti");
+        System.out.println("1 Aakkosjärjestykseen");
+        System.out.println("2 Käänteiseen aakkosjärjestykseen");
         int komento = this.lukija.lueInteger("Anna komento: ");
 
-        ListanJarjestaja jarjestaja = new ListanJarjestaja();
-        List<String> muokattavaLista = super.tiedostonLukija.annaListanaIlmanRiviNumeroa(super.tiedosto.getTiedosto());
         if (komento == 1) {
-            muokattavaLista = jarjestaja.jarjestaAakkosjarjestykseenLaskevasti(muokattavaLista);
+            super.tallennetutTuotteet.jarjestaAakkosjarjestykseenNousevasti();
         }
         if (komento == 2) {
-            muokattavaLista = jarjestaja.jarjestaAakkosjarjestykseenNousevasti(muokattavaLista);
+            super.tallennetutTuotteet.jarjestaAakkosjarjestykseenLaskevasti();
         }
-        tk.tyhjennaTiedosto(this.tiedosto.getNimi());
-        tk.kirjoitaTiedostoon(muokattavaLista, this.tiedosto.getNimi());
+        tk.tyhjennaTiedosto(super.tallennetutTuotteet.getTiedosto());
+        tk.kirjoitaTiedostoon(super.tallennetutTuotteet.annaListana(), super.tallennetutTuotteet.getTiedosto());
         return true;
     }
 }

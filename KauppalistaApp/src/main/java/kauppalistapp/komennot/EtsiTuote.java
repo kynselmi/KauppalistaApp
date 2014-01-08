@@ -5,6 +5,8 @@ import java.util.List;
 import kauppalistapp.apurit.*;
 import kauppalistapp.logiikka.Ostoslista;
 import kauppalistapp.logiikka.Tiedosto;
+import kauppalistapp.logiikka.Tuote;
+import kauppalistapp.logiikka.Tuotelista;
 
 /**
  * @author Kärkkäinen Aleksi
@@ -17,22 +19,24 @@ public class EtsiTuote extends Komento {
      * @param numero Komennon numero
      * @param nimi  Komennon nimi
      * @param lukija Lukija-tyyppiä oleva scanner-lukija
-     * @param tiedosto Tallennetut Tuotteet
+     * @param tallennetutTuotteet Tallennetut Tuotteet
      * @param tallennetutListat Käyttäjän luomat tallennetut listat
      */
-    public EtsiTuote(int numero, String nimi, Lukija lukija, Tiedosto tiedosto, List<Ostoslista> tallennetutListat) {
-        super(numero, nimi, lukija, tiedosto, tallennetutListat);
+    public EtsiTuote(int numero, String nimi, Lukija lukija, Tuotelista tallennetutTuotteet, List<Ostoslista> tallennetutListat) {
+        super(numero, nimi, lukija, tallennetutTuotteet, tallennetutListat);
     }
 
     @Override
     public boolean suorita() {
         String hakusana = super.lukija.lueTeksti("Anna tuotteen nimi: ");
+        
         int montakoLoytyi = 0;
-        for (String listalla : super.tiedostonLukija.lueJaAnnaListana(super.tiedosto.getTiedosto())) {
-            if (listalla.contains(hakusana)) {
-                System.out.println("  " + listalla);
+        List<Integer> loydetytTuotteet = super.tallennetutTuotteet.etsiTuotteita(hakusana);
+        
+        for (Integer riviNro : loydetytTuotteet) {            
+                System.out.println("  " + riviNro + super.tallennetutTuotteet.annaRivi(riviNro));
                 montakoLoytyi++;
-            }
+            
         }
         if (montakoLoytyi == 1) {
             System.out.println("Hakusanallasi loytyi yksi tulos");

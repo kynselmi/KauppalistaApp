@@ -13,13 +13,14 @@ import java.util.List;
 import java.util.ArrayList;
 import kauppalistapp.logiikka.Ostoslista;
 import Testiapu.SyoteJaTulostusApuri;
+import kauppalistapp.logiikka.Tuotelista;
 
 public class JarjestaTuotteitaTest {
 
-    private Tiedosto tuoteListaTesti;
+    private Tuotelista tuoteListaTesti;
     private Komento komento;
     private Lukija lukija;
-    private Tiedosto tallennetutListatTiedosto;
+    private List<Ostoslista> tallennetutListatTiedosto;
     private SyoteJaTulostusApuri SJTApuri;
     private TiedostonLukija tl;
 
@@ -36,9 +37,8 @@ public class JarjestaTuotteitaTest {
 
     @Before
     public void setUp() {
-        this.tuoteListaTesti = new Tiedosto("TuotteetTesti");
+        this.tuoteListaTesti = new Tuotelista();
         this.lukija = new Lukija();
-        this.tallennetutListatTiedosto = new Tiedosto("TallennetutListatTesti");
         this.komento = new JarjestaTuotteita(1, "Testi", this.lukija, this.tuoteListaTesti, this.tallennetutListatTiedosto);
         this.SJTApuri = new SyoteJaTulostusApuri();
         this.tl = new TiedostonLukija();

@@ -7,7 +7,7 @@ import java.util.Objects;
  * @author Kärkkäinen Aleksi
  * @version 0.1
  */
-public class Tuote{
+public class Tuote implements Comparable<Tuote>{
 
     private String nimi;
     private int eurot;
@@ -19,6 +19,8 @@ public class Tuote{
      */
     public Tuote(String nimi) {
         this.nimi = nimi;
+        this.eurot = 0;
+        this.sentit = 0;
     }
 
     /**
@@ -38,6 +40,14 @@ public class Tuote{
         return nimi;
     }
 
+    public int getEurot() {
+        return eurot;
+    }
+
+    public int getSentit() {
+        return sentit;
+    }
+
 
     public void setNimi(String nimi) {
         this.nimi = nimi;
@@ -55,9 +65,9 @@ public class Tuote{
             sentitTekstina = "0" + this.sentit;
         }
         if (this.eurot == 0 && this.sentit == 0) {
-            return this.nimi;
+            return "  " + this.nimi;
         } else {
-            return this.nimi + ", " + this.eurot + "," + sentitTekstina + "e";
+            return "  " + this.nimi + " " + this.eurot + "," + sentitTekstina + "e";
         }
     }
 
@@ -89,6 +99,11 @@ public class Tuote{
             return false;
         }
         return true;
+    }
+
+    @Override
+    public int compareTo(Tuote tuote) {
+        return this.nimi.compareTo(tuote.getNimi());
     }
 
 
