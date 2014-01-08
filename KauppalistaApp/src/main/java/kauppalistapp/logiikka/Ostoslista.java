@@ -78,6 +78,29 @@ public class Ostoslista implements Comparable<Ostoslista> {
         }
         return lista;
     }
+    
+    public String kokonaisHinta() {
+        int eurot = 0;
+        int sentit = 0;
+        for (Ostos listalla : this.ostoslista) {
+            eurot += listalla.getTuote().getEurot()*listalla.getMaara();
+            sentit += listalla.getTuote().getSentit()*listalla.getMaara(); 
+        }
+        eurot += sentit/100;
+        sentit = sentit%100;
+        
+        if (sentit > 10) {
+            return eurot + "," + sentit + "e";
+        }
+        else {
+            return eurot + ",0" + sentit + "e";
+        }
+        
+    }
+    
+    public void jarjestaHinnanMukaanLaskevasti() {
+        
+    }
 
     @Override
     public String toString() {

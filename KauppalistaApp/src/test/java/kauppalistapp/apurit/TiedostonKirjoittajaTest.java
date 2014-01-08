@@ -24,26 +24,11 @@ public class TiedostonKirjoittajaTest {
     private TiedostonLukija tl;
     private Tiedosto tiedosto;
 
-    public TiedostonKirjoittajaTest() {
-    }
-
-    @BeforeClass
-    public static void setUpClass() {
-    }
-
-    @AfterClass
-    public static void tearDownClass() {
-    }
-
     @Before
     public void setUp() {
         this.tk = new TiedostonKirjoittaja();
         this.tl = new TiedostonLukija();
         this.tiedosto = new Tiedosto("Testi");
-    }
-
-    @After
-    public void tearDown() {
     }
 
     @Test
@@ -70,10 +55,10 @@ public class TiedostonKirjoittajaTest {
         String tiedostonNimi = "testi2";
         this.tk.kirjoitaTiedostoon(lista, new Tiedosto(tiedostonNimi));
         List<String> ListaTiedostosta = this.tl.lueJaAnnaListana(this.tiedosto);
-        assertEquals("1 - Testi", ListaTiedostosta.get(0));
-        assertEquals("2 - Test", ListaTiedostosta.get(1));
-        assertEquals("3 - T", ListaTiedostosta.get(2));
-        assertEquals("4 - lisattavaa", ListaTiedostosta.get(3));
+        assertEquals("1@Testi", ListaTiedostosta.get(0));
+        assertEquals("2@Test", ListaTiedostosta.get(1));
+        assertEquals("3@T", ListaTiedostosta.get(2));
+        assertEquals("4@lisattavaa", ListaTiedostosta.get(3));
     }
     
     

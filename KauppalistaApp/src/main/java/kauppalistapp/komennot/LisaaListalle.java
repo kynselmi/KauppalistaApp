@@ -32,16 +32,14 @@ public class LisaaListalle extends Komento {
 
     @Override
     public boolean suorita() {
-        tulostaListat();
-
         Ostoslista uusiLista = new Ostoslista("väliaikainen");
         String listanNimi = this.lukija.lueTeksti("Anna listan nimi: ");
-        System.out.println("");
+        tulostaTeksti("");
 
         boolean onkoListalla = false;
         for (Ostoslista ostoslista : super.tallennetutListat) {
             if (ostoslista.getNimi().equals(listanNimi)) {
-                System.out.println("listalla olevat nimet ostolistat: " + ostoslista.getNimi());
+                tulostaTeksti("listalla olevat nimet ostolistat: " + ostoslista.getNimi());
                 uusiLista = ostoslista;
                 onkoListalla = true;
                 break;
@@ -54,15 +52,15 @@ public class LisaaListalle extends Komento {
 
 
         while (true) {
-            System.out.println("Listalla " + uusiLista.getNimi() + " on " + uusiLista.annaTuotteidenMaara() + " tuotetta:");
-            System.out.println(uusiLista);
-            System.out.println("");
+            tulostaTeksti("Listalla " + uusiLista.getNimi() + " on " + uusiLista.annaTuotteidenMaara() + " tuotetta:");
+            tulostaTeksti(uusiLista);
+            tulostaTeksti("");
 
-            System.out.println("Lisättävät tuotteet:");
-            System.out.println(super.tallennetutTuotteet);
+            tulostaTeksti("Lisättävät tuotteet:");
+            tulostaTeksti(super.tallennetutTuotteet);
 
 
-            int lisattavanRivinumero = super.lukija.lueInteger("Anna lisattavan tuotteen rivinumero (kirjain lopettaa): ");
+            int lisattavanRivinumero = super.lukija.lueInteger("Anna lisattavan tuotteen rivinumero (kirjain lopettaa): ");                       
 
             if (lisattavanRivinumero == -1) {
                 break;
@@ -72,7 +70,7 @@ public class LisaaListalle extends Komento {
                 Ostos ostos = new Ostos(lisattava, 1);
                 uusiLista.lisaaOstos(ostos);
             } else {
-                System.out.println("Listalla ei ole antamaasi riviä");
+                tulostaTeksti("Listalla ei ole antamaasi riviä");
             }
         }
 
@@ -94,15 +92,5 @@ public class LisaaListalle extends Komento {
         } catch (IOException ex) {
         }
         return true;
-    }
-
-    /**
-     * Tulostaa tallennetut listat rivittäin
-     */
-    public void tulostaListat() {
-        for (Ostoslista ostoslista : this.tallennetutListat) {
-            System.out.println(ostoslista.getNimi());
-            System.out.println("");
-        }
     }
 }

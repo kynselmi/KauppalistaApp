@@ -1,11 +1,8 @@
 package kauppalistapp.komennot;
 
 import kauppalistapp.apurit.*;
-import java.util.Collections;
 import java.util.List;
-import java.util.ArrayList;
 import kauppalistapp.logiikka.Ostoslista;
-import kauppalistapp.logiikka.Tiedosto;
 import kauppalistapp.logiikka.Tuotelista;
 
 /**
@@ -30,8 +27,8 @@ public class JarjestaTuotteita extends Komento {
     @Override
     public boolean suorita() {
         TiedostonKirjoittaja tk = new TiedostonKirjoittaja();
-        System.out.println("1 Aakkosjärjestykseen");
-        System.out.println("2 Käänteiseen aakkosjärjestykseen");
+        tulostaTeksti("1 Aakkosjärjestykseen");
+        tulostaTeksti("2 Käänteiseen aakkosjärjestykseen");
         int komento = this.lukija.lueInteger("Anna komento: ");
 
         if (komento == 1) {

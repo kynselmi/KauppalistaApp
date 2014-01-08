@@ -34,19 +34,19 @@ public class EtsiTuote extends Komento {
         List<Integer> loydetytTuotteet = super.tallennetutTuotteet.etsiTuotteita(hakusana);
         
         for (Integer riviNro : loydetytTuotteet) {            
-                System.out.println("  " + riviNro + super.tallennetutTuotteet.annaRivi(riviNro));
+                tulostaTeksti("  " + riviNro + super.tallennetutTuotteet.annaRivi(riviNro));
                 montakoLoytyi++;
             
         }
         if (montakoLoytyi == 1) {
-            System.out.println("Hakusanallasi loytyi yksi tulos");
+            tulostaTeksti("Hakusanallasi loytyi yksi tulos");
         }
         else if (montakoLoytyi == 0) {
-            System.out.println("Hakusanallasi ei loytynyt yhtaan tulosta");
+            tulostaTeksti("Hakusanallasi ei loytynyt yhtaan tulosta");
         } else {
-            System.out.println("Hakusanallasi loytyi " + montakoLoytyi + " tulosta");
+            tulostaTeksti("Hakusanallasi loytyi " + montakoLoytyi + " tulosta");
         }
-        System.out.println("");
+        tulostaTeksti("");
         return true;
     }
 }

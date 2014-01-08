@@ -6,6 +6,6 @@ package kauppalistapp.kayttoliittyma;
  */
 public interface IO {
     
-    public void tulostaTeksti(String teksti); 
+    public void tulostaTeksti(Object teksti); 
         
 }

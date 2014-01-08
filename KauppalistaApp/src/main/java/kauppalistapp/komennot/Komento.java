@@ -5,6 +5,7 @@ import kauppalistapp.apurit.*;
 import kauppalistapp.logiikka.Tiedosto;
 import kauppalistapp.logiikka.Ostoslista;
 import java.util.List;
+import kauppalistapp.kayttoliittyma.IO;
 import kauppalistapp.logiikka.Tuotelista;
 
 /**
@@ -12,7 +13,7 @@ import kauppalistapp.logiikka.Tuotelista;
  * @author Kärkkäinen Aleksi
  * @version 0.1
  */
-public abstract class Komento {
+public abstract class Komento implements IO {
     
     private int numero;
     private String nimi;
@@ -70,6 +71,10 @@ public abstract class Komento {
  * @return Palauttaa totuusarvona true jos ohjelman tulee jatkua komennon suorittamisen jälkeen. Palauttaa false jos ohjelman tulee päättyä.
  */
     public abstract boolean suorita();
-        
+    
+    @Override
+    public void tulostaTeksti(Object teksti) {
+        System.out.println(teksti);
+    }
     
 }

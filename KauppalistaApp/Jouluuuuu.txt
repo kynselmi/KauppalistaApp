@@ -1,8 +1,0 @@
-1 - 2x Kinkku, 30,50e
-2 - 2x Lohi, 11,50e
-3 - Maito, 1,50e
-4 - 2x Kinkku, 30,50e
-5 - 2x Lohi, 11,50e
-6 - Maito, 1,50e
-7 - Kinkku, 30,50e
-8 - Lohi, 11,50e

@@ -59,4 +59,18 @@ public class LukijaTest {
         this.lukija = new Lukija();
         assertEquals(10, this.lukija.lueInteger("Testi"));
     }
+    
+    @Test
+    public void antaaKokonaisluvunVaikkaSyoteString() {
+        System.setIn(this.syo.otaSyote("a"));
+        this.lukija = new Lukija();
+        assertEquals(-1, this.lukija.lueInteger());
+    }
+    
+        @Test
+    public void antaaKokonaisluvunVaikkaSyoteStringTekstilla() {
+        System.setIn(this.syo.otaSyote("a"));
+        this.lukija = new Lukija();
+        assertEquals(-1, this.lukija.lueInteger("Testi"));
+    }
 }

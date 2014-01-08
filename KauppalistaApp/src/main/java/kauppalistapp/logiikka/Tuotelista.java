@@ -19,9 +19,9 @@ public class Tuotelista{
     private List<Tuote> tuoteLista;
     private Tiedosto tiedosto;
     
-    public Tuotelista() {
+    public Tuotelista(String nimi) {
         this.tuoteLista = new ArrayList<Tuote>();
-        this.tiedosto = new Tiedosto("Tuotteet");        
+        this.tiedosto = new Tiedosto(nimi);        
     }
     
     public void lisaaTuote(Tuote tuote) {
@@ -67,6 +67,7 @@ public class Tuotelista{
         String palautettava = "";
         for (Tuote listalla : this.tuoteLista) {
             palautettava += riviNro + " " + listalla.toString() + "\n";
+            riviNro++;
         }
         return palautettava;
     }
@@ -94,7 +95,5 @@ public class Tuotelista{
     public void jarjestaAakkosjarjestykseenLaskevasti() {
         Collections.reverse(this.tuoteLista);
     }
-
-
 }
 

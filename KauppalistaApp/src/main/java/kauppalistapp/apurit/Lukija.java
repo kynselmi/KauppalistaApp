@@ -44,13 +44,12 @@ public class Lukija {
      * Tulostaa parametrina annetun tekstin ja lukee kokonaislukusyötteen
      * @return luetun kokonaisluvun
      */
-    public int lueInteger() {
-        String nro = "-1";
+    public int lueInteger() {  
+        String nro = this.lukija.next();
         try {
-            nro = this.lukija.next();
-        } catch (Exception Ex) {
-        }
-        return Integer.parseInt(nro);
+            return Integer.parseInt(nro);
+        } catch (NumberFormatException ex) {            
+        } return -1;
     }
 
     /**

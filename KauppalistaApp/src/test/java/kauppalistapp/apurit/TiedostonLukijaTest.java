@@ -66,12 +66,5 @@ public class TiedostonLukijaTest {
     public void antaaOikeanRivimaaranUseampi() {
         assertEquals(this.tl.riveja(new Tiedosto("useammanRivinLuettava")), 2);
     }
-    
-    @Test
-    public void antaaTrimmatunListan() {
-        List<String> trimmattuLista =  this.tl.annaListanaIlmanRiviNumeroa(new Tiedosto("TuotelistaTestaus"));
-        assertEquals(trimmattuLista.get(0), "Maito");
-        assertEquals(trimmattuLista.get(1), "Leipa");
-        assertEquals(trimmattuLista.get(2), "Liha");
-    }
+
 }

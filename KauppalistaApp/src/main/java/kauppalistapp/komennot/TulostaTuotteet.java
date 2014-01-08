@@ -27,20 +27,8 @@ public class TulostaTuotteet extends Komento {
 
     @Override
     public boolean suorita() {
-          System.out.println(super.tallennetutTuotteet.toString());
+          tulostaTeksti(super.tallennetutTuotteet.toString());
           return true;
         
-    }
-    
-    /**
-     * Tulostaa listan Stringeja yksi per rivi
-     * @param lista Tulostettava lista tuotteita
-     */
-    public void tulostus(List<String> lista) {
-        System.out.println("Tuotteet:");
-        for (String tuote : lista) {
-            System.out.println("  " + tuote);
-        }
-        System.out.println("");
-    }    
+    }   
 }

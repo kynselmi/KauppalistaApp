@@ -1,49 +1,60 @@
 package kauppalistapp.komennot;
 
+import java.util.ArrayList;
+import java.util.List;
+import kauppalistapp.apurit.Lukija;
+import kauppalistapp.apurit.TiedostonKirjoittaja;
+import kauppalistapp.apurit.TiedostonLukija;
+import kauppalistapp.logiikka.Ostoslista;
+import kauppalistapp.logiikka.Tiedosto;
+import kauppalistapp.logiikka.Tuote;
+import kauppalistapp.logiikka.Tuotelista;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import kauppalistapp.apurit.Lukija;
-import kauppalistapp.logiikka.Ostoslista;
-import kauppalistapp.logiikka.Tiedosto;
-import java.util.List;
-import java.util.ArrayList;
 
-public class KomentoTest {
-    
-    private Komento komento;
-    private Lukija lukija;
+/**
+ *
+ * @author Aleksi
+ */
+public abstract class KomentoTest {
+
+    private int numero;
+    private String nimi;
+    protected Lukija lukija;
+    protected TiedostonLukija tiedostonLukija;
+    protected TiedostonKirjoittaja tiedostonKirjoittaja;
+    protected Tuotelista tallennetutTuotteet;
+    protected List<Ostoslista> tallennetutListat;
 
     public KomentoTest() {
-    }
-
-    @BeforeClass
-    public static void setUpClass() {
-    }
-
-    @AfterClass
-    public static void tearDownClass() {
+        this.lukija = new Lukija();
+        this.tiedostonLukija = new TiedostonLukija();
+        this.tiedostonKirjoittaja = new TiedostonKirjoittaja();
+        this.tallennetutTuotteet = new Tuotelista("TuotteetTesti");
+        this.tallennetutListat = new ArrayList<Ostoslista>();
     }
 
     @Before
-//    public void setUp() {
-//        this.lukija = new Lukija();
-//        Ostoslista lista = new Ostoslista("tallennetutListatTesti");
-//        List<Ostoslista> listat = new ArrayList<Ostoslista>();
-//        listat.add(lista);
-//        Tiedosto testiTuotteet = new Tiedosto("testiTuotteet");
-//        this.komento = new LisaaListalle(1, "simo", this.lukija, testiTuotteet, listat);
-//    }
+    public void setUp() {
+        lisaaTuotteet();
+        lisaaListat();
+    }
 
-    @After
-    public void tearDown() {
+    private void lisaaListat() {
+        for (String tallennettuLista : this.tiedostonLukija.annaListanaIlmanRiviNumeroa(new Tiedosto("TallennetutListatTesti"))) {
+            Ostoslista ostoslista = this.tiedostonLukija.annaOstoslistana(new Tiedosto(tallennettuLista));
+            this.tallennetutListat.add(ostoslista);
+        }
     }
     
-    @Test
-    public void toStringOikein() {
-        assertEquals(this.komento.toString(), "1 simo");
+        private void lisaaTuotteet() {
+        TiedostonLukija tl = new TiedostonLukija();
+        for (Tuote listalla : tl.annaTuoteListana(new Tiedosto("Tuotteet"))) {
+            this.tallennetutTuotteet.lisaaTuote(listalla);
+        }
     }
 }

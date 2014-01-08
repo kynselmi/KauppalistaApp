@@ -1,10 +1,8 @@
-1 - tyhjennettava
-2 - tyhjennettava
-3 - tyhjennettava
-<<<<<<< HEAD
-=======
-4 - tyhjennettava
-5 - tyhjennettava
-6 - tyhjennettava
-7 - tyhjennettava
->>>>>>> bbd9854f2ad0b01433c491ff7b02417f72365404
+1@tyhjennettava
+2@tyhjennettava
+3@tyhjennettava
+4@tyhjennettava
+5@tyhjennettava
+6@tyhjennettava
+7@tyhjennettava
+8@tyhjennettava

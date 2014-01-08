@@ -1,4 +1,3 @@
-1 - Kinkku, 30,50e
-2 - Lohi, 11,50e
-3 - Maito, 1,50e
-4 - Zuola, 1,50e
+1@Maito#2,00
+2@Leipa#1,50
+3@Liha#2,90

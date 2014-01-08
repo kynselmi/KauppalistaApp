@@ -30,34 +30,5 @@ public class Tiedosto {
 
     public String getNimi() {
         return nimi;
-    }
-    
-//    /**
-//     * Antaa tekstitiedoston List-muodossa.
-//     * 
-//     * Jokaiselle taulukon sarakkeelle tallennettaan yksi rivi tekstitiedostosta. Rivinumero jätetään tähän listaan.
-//     * @return Tekstitiedosto list-muodossa, jossa jokainen tiedoston rivi on yksi taulukon rivi
-//     */
-//    public List<String> annaListanaRiviNumeroMukana() {
-//        TiedostonLukija tl = new TiedostonLukija();
-//        return tl.lueJaAnnaListana(this.tiedosto);
-//    }
-//    
-//    /**
-//     * Antaa tekstitiedoston List-muodossa.
-//     * 
-//     * Jokaiselle taulukon sarakkeelle tallennettaan yksi rivi tekstitiedostosta.
-//     * @return Tekstitiedosto list-muodossa, jossa jokainen tiedoston rivi on yksi taulukon rivi
-//     */
-//    public List<String> annaListana() {
-//        TiedostonLukija tl = new TiedostonLukija();
-//        List<String> tuotelista = tl.annaListanaIlmanRiviNumeroa(this.tiedosto);
-//        return tuotelista;
-//    }
-//    
-//    public Ostoslista annaOstosListana() {
-//        Ostoslista palautettava = new Ostoslista(getNimi());
-//        palautettava.lisaaOstoksiaListasta(annaListana());
-//        return palautettava;
-//    }       
+    }       
 }

@@ -27,6 +27,7 @@ public class Ostos implements Comparable<Ostos> {
     public void lisaaMaaraaYhdella() {
         this.maara += 1;
     }
+    
 
     @Override
     public int compareTo(Ostos ostos) {
@@ -36,7 +37,10 @@ public class Ostos implements Comparable<Ostos> {
     @Override
     public String toString() {
         String palautettava = "";
-        if (this.maara > 1) {
+        if (this.maara == 1) {
+            palautettava += "   ";
+        }
+        else {
             palautettava +=  this.maara + "x ";
         }
         palautettava += this.tuote.toString();

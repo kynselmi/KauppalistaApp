@@ -1,2 +1,0 @@
-3#Appelsiinimehu, 1,50e#0,0
-1#Kuohukerma, 1,45e#0,0

@@ -29,7 +29,7 @@ public class LisaaTuote extends Komento {
         ArrayList<String> lista;
         while (true) {
             Tuote tuote;
-            System.out.println("Voit syottaa tuotteita niin kauan kuin haluat. Syota nimeksi 'x' jos haluat lopettaa.");
+            tulostaTeksti("Voit syottaa tuotteita niin kauan kuin haluat. Syota nimeksi 'x' jos haluat lopettaa.");
             String nimi = super.lukija.lueTeksti("Anna tuotteen nimi: ");
             if (nimi.equals("x")) {
                 break;
