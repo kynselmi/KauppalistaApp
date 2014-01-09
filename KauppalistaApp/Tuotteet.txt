@@ -1,6 +1,6 @@
 1@Coca-Cola#2,85
 2@Jauheliha#3,10
 3@Kananmunat#4,50
-4@Lonkero#2,50
-5@Maito#3,0
-6@Suola#1,50
+4@Limu#0,0
+5@Lonkero#2,50
+6@Mansikka#2,50
