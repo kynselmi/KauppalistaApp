@@ -1,6 +1,9 @@
 package kauppalistapp;
 
-import kauppalistapp.kayttoliittyma.Sovellus;
+import javax.swing.SwingUtilities;
+import kauppalistapp.kayttoliittyma.GUI;
+import kauppalistapp.kayttoliittyma.Graafinenkayttoliittyma;
+import kauppalistapp.kayttoliittyma.Tekstikayttoliittyma;
 
 
 /**
@@ -10,9 +13,9 @@ import kauppalistapp.kayttoliittyma.Sovellus;
  */
 public class Main {
 
-    public static void main(String[] args) {
-        new Sovellus().kaynnista();
-             
+    public static void main(String[] args) {        
+        new Tekstikayttoliittyma().kaynnista();
+//        new Graafinenkayttoliittyma().kaynnista();
     }
 }
 

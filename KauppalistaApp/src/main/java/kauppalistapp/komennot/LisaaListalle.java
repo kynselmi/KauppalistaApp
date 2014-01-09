@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import kauppalistapp.kayttoliittyma.Sovellus;
+import kauppalistapp.kayttoliittyma.Tekstikayttoliittyma;
 
 /**
  *
@@ -55,11 +55,11 @@ public class LisaaListalle extends Komento {
 
         while (true) {
             tulostaTeksti("Listalla " + uusiLista.getNimi() + " on " + uusiLista.annaTuotteidenMaara() + " tuotetta:");
-            tulostaTeksti(uusiLista);
+            tulostaTeksti(uusiLista.toString());
             tulostaTeksti("");
 
             tulostaTeksti("Lisättävät tuotteet:");
-            tulostaTeksti(super.tallennetutTuotteet);
+            tulostaTeksti(super.tallennetutTuotteet.toString());
 
 
             int lisattavanRivinumero = super.lukija.lueInteger("Anna lisattavan tuotteen rivinumero (kirjain lopettaa): ");                       
@@ -95,4 +95,5 @@ public class LisaaListalle extends Komento {
         }
         return true;
     }
+
 }

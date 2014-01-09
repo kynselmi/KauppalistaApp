@@ -6,43 +6,47 @@ import kauppalistapp.logiikka.*;
 import java.util.TreeMap;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.SwingUtilities;
 import kauppalistapp.apurit.TiedostonLukija;
 
 /**
  *
  * @author Kärkkäinen Aleksi
  * @version 0.1
- * 
+ *
  * Ohjelman suoritus tapahtuu tässä luokassa
  */
-public class Sovellus implements IO {
+public class Tekstikayttoliittyma implements IO {
 
     private Lukija lukija;
     private TreeMap<Integer, Komento> komennot;
     private Tuotelista tallennetutTuotteet;
     private List<Ostoslista> tallennetutListat;
 
+
     /**
      * Sovellus-olion konstruktori
      */
-    public Sovellus() {
+    public Tekstikayttoliittyma() {
         this.komennot = new TreeMap<Integer, Komento>();
         this.lukija = new Lukija();
         this.tallennetutTuotteet = new Tuotelista("Tuotteet");
         this.tallennetutListat = new ArrayList<Ostoslista>();
+
     }
 
     /**
      * Kaynnistaa sovelluksen
      */
     public void kaynnista() {
+
         tulostaTeksti("*****KauppalistaApp*****");
         tulostaTeksti("");
 
         lisaaTuotteet();
         lisaaListat();
         lisaaKomennot();
-        
+
 
         boolean jatkuu = true;
         while (jatkuu) {
@@ -50,8 +54,8 @@ public class Sovellus implements IO {
             tulostaTeksti("Komennot:");
             tulostaTeksti("");
             tulostaKomennot();
-            tulostaTeksti("Anna komento (1-" + this.komentojenMaara() + "): ");
-            int komento = this.lukija.lueInteger();
+            tulostaTekstiIlmanRivinVaihtoa("Anna komento (1-" + this.komentojenMaara() + "): ");
+            int komento = lueInteger();
             tulostaTeksti("");
             jatkuu = this.komennot.get(komento).suorita();
         }
@@ -76,7 +80,7 @@ public class Sovellus implements IO {
      */
     public void tulostaKomennot() {
         for (int i = 1; i <= this.komentojenMaara(); i++) {
-            tulostaTeksti(this.komennot.get(i));
+            tulostaTeksti(this.komennot.get(i).toString());
         }
         tulostaTeksti("¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨");
     }
@@ -109,13 +113,23 @@ public class Sovellus implements IO {
     }
 
     /**
-     * 
+     *
      * Sovellus-luokan implementaatio rajapinnan IO-metodista
      *
      * @param teksti tulostettava asia
      */
     @Override
-    public void tulostaTeksti(Object teksti) {
+    public void tulostaTeksti(String teksti) {
         System.out.println(teksti);
+    }
+
+    @Override
+    public int lueInteger() {
+        return this.lukija.lueInteger();
+    }
+
+    @Override
+    public void tulostaTekstiIlmanRivinVaihtoa(String teksti) {
+        System.out.print(teksti);
     }
 }

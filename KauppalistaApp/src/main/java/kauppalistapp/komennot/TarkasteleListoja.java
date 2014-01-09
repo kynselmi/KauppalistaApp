@@ -34,11 +34,12 @@ public class TarkasteleListoja extends Komento {
         tulostaTeksti("");
         
         tulostaTeksti(super.tallennetutListat.get(riviNro).getNimi());
-        tulostaTeksti(super.tallennetutListat.get(riviNro));
+        tulostaTeksti(super.tallennetutListat.get(riviNro).toString());
         tulostaTeksti("Kokonaishinta: " + super.tallennetutListat.get(riviNro).kokonaisHinta());
         tulostaTeksti("");
         tulostaTeksti("");
         return true;
     }
+
     
 }

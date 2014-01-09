@@ -50,8 +50,8 @@ public abstract class KomentoTest {
             this.tallennetutListat.add(ostoslista);
         }
     }
-    
-        private void lisaaTuotteet() {
+
+    private void lisaaTuotteet() {
         TiedostonLukija tl = new TiedostonLukija();
         for (Tuote listalla : tl.annaTuoteListana(new Tiedosto("Tuotteet"))) {
             this.tallennetutTuotteet.lisaaTuote(listalla);

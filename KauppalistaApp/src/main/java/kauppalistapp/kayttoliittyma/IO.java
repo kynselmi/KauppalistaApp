@@ -14,6 +14,9 @@ public interface IO {
      * 
      * @param teksti tulostettava asia
      */
-    public void tulostaTeksti(Object teksti); 
-        
+    public void tulostaTeksti(String teksti);
+    
+    public void tulostaTekstiIlmanRivinVaihtoa(String teksti);
+          
+    public int lueInteger();
 }

@@ -43,4 +43,5 @@ public class JarjestaTuotteita extends Komento {
         tk.kirjoitaTiedostoon(super.tallennetutTuotteet.annaListana(), super.tallennetutTuotteet.getTiedosto());
         return true;
     }
+
 }

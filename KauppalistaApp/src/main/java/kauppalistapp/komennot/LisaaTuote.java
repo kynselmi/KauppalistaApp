@@ -50,4 +50,5 @@ public class LisaaTuote extends Komento {
         return true;
        
     }
+
 }

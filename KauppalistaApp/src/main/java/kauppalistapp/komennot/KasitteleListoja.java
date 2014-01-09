@@ -67,7 +67,7 @@ public class KasitteleListoja extends Komento {
     public void tulostaKomennot() {
         tulostaTeksti("Komennot: ");
         for (int i = 1; i <= this.komennot.keySet().size(); i++) {
-            tulostaTeksti(this.komennot.get(i));
+            tulostaTeksti(this.komennot.get(i).toString());
         }
         tulostaTeksti("");
     }
@@ -83,4 +83,5 @@ public class KasitteleListoja extends Komento {
         }
         tulostaTeksti("");
     }
+
 }

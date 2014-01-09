@@ -51,5 +51,6 @@ public class PoistaTuote extends Komento {
         
         return trimmattuLista;
     }
+
     
 }

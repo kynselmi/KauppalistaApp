@@ -83,8 +83,18 @@ public abstract class Komento implements IO {
      * @param teksti tulostettava asia
      */
     @Override
-    public void tulostaTeksti(Object teksti) {
+    public void tulostaTeksti(String teksti) {
         System.out.println(teksti);
+    }
+    
+        @Override
+    public int lueInteger() {
+        return this.lukija.lueInteger();
+    }
+        
+    @Override
+    public void tulostaTekstiIlmanRivinVaihtoa(String teksti) {
+        System.out.print(teksti);
     }
     
 }

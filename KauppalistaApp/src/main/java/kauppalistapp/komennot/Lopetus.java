@@ -31,4 +31,5 @@ public class Lopetus extends Komento {
     public boolean suorita() {
         return false;
     }
+
 }
