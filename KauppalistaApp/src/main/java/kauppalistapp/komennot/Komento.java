@@ -1,5 +1,5 @@
-
 package kauppalistapp.komennot;
+
 import java.util.ArrayList;
 import kauppalistapp.apurit.*;
 import kauppalistapp.logiikka.Tiedosto;
@@ -12,13 +12,13 @@ import kauppalistapp.logiikka.Tuotelista;
  *
  * @author Kärkkäinen Aleksi
  * @version 0.1
- * 
+ *
  * Ohjelman komento
- * 
+ *
  * Jokaisella komennolla on jokin toiminto.
  */
 public abstract class Komento implements IO {
-    
+
     private int numero;
     private String nimi;
     /**
@@ -38,14 +38,15 @@ public abstract class Komento implements IO {
      */
     protected Tuotelista tallennetutTuotteet;
     /**
-     * Käyttäjän tallentamat listat 
+     * Käyttäjän tallentamat listat
      */
     protected List<Ostoslista> tallennetutListat;
-    
+
     /**
      * Komento-luokan konstruktori
+     *
      * @param numero Komennon numero
-     * @param nimi  Komennon nimi
+     * @param nimi Komennon nimi
      * @param lukija Lukija-tyyppiä oleva scanner-lukija
      * @param tallennetutTuotteet Tallennetut Tuotteet
      * @param tallennetutListat Käyttäjän luomat tallennetut listat
@@ -57,44 +58,40 @@ public abstract class Komento implements IO {
         this.tiedostonLukija = new TiedostonLukija();
         this.tiedostonKirjoittaja = new TiedostonKirjoittaja();
         this.tallennetutTuotteet = tallennetutTuotteet;
-        this.tallennetutListat = tallennetutListat;        
+        this.tallennetutListat = tallennetutListat;
     }
-    
+
     /**
      * Korvaa toString-metodin Komentoluokalle
+     *
      * @return Komennon String-esitys
      */
-    
     @Override
     public String toString() {
         return this.numero + " " + this.nimi;
     }
-    
-/**
- * Suorittaa komennon
- * @return Palauttaa totuusarvona true jos ohjelman tulee jatkua komennon suorittamisen jälkeen. Palauttaa false jos ohjelman tulee päättyä.
- */
-    public abstract boolean suorita();
-    
+
     /**
+     * Suorittaa komennon
      *
-     * IO-rajapinnan tulostuksen implementaatio
-     * 
-     * @param teksti tulostettava asia
+     * @return Palauttaa totuusarvona true jos ohjelman tulee jatkua komennon
+     * suorittamisen jälkeen. Palauttaa false jos ohjelman tulee päättyä.
      */
+    public abstract boolean suorita();
+
     @Override
     public void tulostaTeksti(String teksti) {
         System.out.println(teksti);
     }
-    
-        @Override
+
+    @Override
     public int lueInteger() {
         return this.lukija.lueInteger();
     }
-        
+
     @Override
     public void tulostaTekstiIlmanRivinVaihtoa(String teksti) {
         System.out.print(teksti);
     }
-    
+
 }

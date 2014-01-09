@@ -23,7 +23,6 @@ public class Tekstikayttoliittyma implements IO {
     private Tuotelista tallennetutTuotteet;
     private List<Ostoslista> tallennetutListat;
 
-
     /**
      * Sovellus-olion konstruktori
      */
@@ -46,7 +45,6 @@ public class Tekstikayttoliittyma implements IO {
         lisaaTuotteet();
         lisaaListat();
         lisaaKomennot();
-
 
         boolean jatkuu = true;
         while (jatkuu) {

@@ -4,6 +4,7 @@ import kauppalistapp.logiikka.*;
 import kauppalistapp.apurit.Lukija;
 import java.util.ArrayList;
 import java.util.List;
+import kauppalistapp.kayttoliittyma.IO;
 
 /**
  *

@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import kauppalistapp.kayttoliittyma.IO;
 import kauppalistapp.kayttoliittyma.Tekstikayttoliittyma;
 
 /**

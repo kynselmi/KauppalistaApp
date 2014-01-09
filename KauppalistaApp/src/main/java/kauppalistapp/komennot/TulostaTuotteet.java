@@ -2,6 +2,7 @@ package kauppalistapp.komennot;
 import java.util.ArrayList;
 import kauppalistapp.apurit.Lukija;
 import java.util.List;
+import kauppalistapp.kayttoliittyma.IO;
 import kauppalistapp.logiikka.Ostoslista;
 import kauppalistapp.logiikka.Tiedosto;
 import kauppalistapp.logiikka.Tuotelista;
