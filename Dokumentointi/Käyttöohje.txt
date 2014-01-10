@@ -1,0 +1,3 @@
+Kauppalista-sovellusta käytetään syöttämällä komentoja (numeroita) komentoriville. Komentoa
+vastaava kokonaisluku näytetään tulosteessa. Ohjelmassa on itsessään paljon käyttöohjetta.
+Käytön ei pitäisi olla vaikeaa.
