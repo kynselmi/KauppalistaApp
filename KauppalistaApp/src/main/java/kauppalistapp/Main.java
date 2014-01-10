@@ -2,7 +2,6 @@ package kauppalistapp;
 
 import javax.swing.SwingUtilities;
 import kauppalistapp.kayttoliittyma.GUI;
-import kauppalistapp.kayttoliittyma.Graafinenkayttoliittyma;
 import kauppalistapp.kayttoliittyma.Tekstikayttoliittyma;
 
 
@@ -15,7 +14,8 @@ public class Main {
 
     public static void main(String[] args) {        
         new Tekstikayttoliittyma().kaynnista();
-//        new Graafinenkayttoliittyma().kaynnista();
+//        GUI kayttis = new GUI();
+//        SwingUtilities.invokeLater(kayttis);
     }
 }
 

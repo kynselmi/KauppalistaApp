@@ -17,7 +17,7 @@ import kauppalistapp.logiikka.Tuotelista;
  *
  * Jokaisella komennolla on jokin toiminto.
  */
-public abstract class Komento implements IO {
+public abstract class Komento {
 
     private int numero;
     private String nimi;
@@ -41,24 +41,29 @@ public abstract class Komento implements IO {
      * Käyttäjän tallentamat listat
      */
     protected List<Ostoslista> tallennetutListat;
+    
+    /**
+     * IO-rajapinnan totetuttava olio
+     */
+    protected IO io;
 
     /**
      * Komento-luokan konstruktori
      *
      * @param numero Komennon numero
      * @param nimi Komennon nimi
-     * @param lukija Lukija-tyyppiä oleva scanner-lukija
      * @param tallennetutTuotteet Tallennetut Tuotteet
      * @param tallennetutListat Käyttäjän luomat tallennetut listat
+     * @param io  IO-rajapinnan totetuttava olio
      */
-    public Komento(int numero, String nimi, Lukija lukija, Tuotelista tallennetutTuotteet, List<Ostoslista> tallennetutListat) {
+    public Komento(int numero, String nimi, Tuotelista tallennetutTuotteet, List<Ostoslista> tallennetutListat, IO io) {
         this.numero = numero;
         this.nimi = nimi;
-        this.lukija = lukija;
         this.tiedostonLukija = new TiedostonLukija();
         this.tiedostonKirjoittaja = new TiedostonKirjoittaja();
         this.tallennetutTuotteet = tallennetutTuotteet;
         this.tallennetutListat = tallennetutListat;
+        this.io = io;
     }
 
     /**
@@ -78,20 +83,5 @@ public abstract class Komento implements IO {
      * suorittamisen jälkeen. Palauttaa false jos ohjelman tulee päättyä.
      */
     public abstract boolean suorita();
-
-    @Override
-    public void tulostaTeksti(String teksti) {
-        System.out.println(teksti);
-    }
-
-    @Override
-    public int lueInteger() {
-        return this.lukija.lueInteger();
-    }
-
-    @Override
-    public void tulostaTekstiIlmanRivinVaihtoa(String teksti) {
-        System.out.print(teksti);
-    }
 
 }

@@ -19,19 +19,19 @@ public class JarjestaTuotteita extends Komento {
      * JarjestaTuotteita-komennon konstruktori
      * @param numero Komennon numero
      * @param nimi  Komennon nimi
-     * @param lukija Lukija-tyyppiä oleva scanner-lukija
-     * @param tiedosto Tallennetut Tuotteet
+     * @param tallennetutTuotteet 
      * @param tallennetutListat Käyttäjän luomat tallennetut listat
+     * @param io  IO-rajapinnan toteuttava olio
      */
-    public JarjestaTuotteita(int numero, String nimi, Lukija lukija, Tuotelista tiedosto, List<Ostoslista> tallennetutListat) {
-        super(numero, nimi, lukija, tiedosto, tallennetutListat);
+    public JarjestaTuotteita(int numero, String nimi, Tuotelista tallennetutTuotteet, List<Ostoslista> tallennetutListat, IO io) {
+        super(numero, nimi, tallennetutTuotteet, tallennetutListat, io);
     }
 
     @Override
     public boolean suorita() {
         TiedostonKirjoittaja tk = new TiedostonKirjoittaja();
-        tulostaTeksti("1 Aakkosjärjestykseen");
-        tulostaTeksti("2 Käänteiseen aakkosjärjestykseen");
+        this.io.tulostaTeksti("1 Aakkosjärjestykseen");
+        this.io.tulostaTeksti("2 Käänteiseen aakkosjärjestykseen");
         int komento = this.lukija.lueInteger("Anna komento: ");
 
         if (komento == 1) {

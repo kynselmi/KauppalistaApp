@@ -20,25 +20,25 @@ public class TarkasteleListoja extends Komento {
      *
      * @param numero Komennon numero
      * @param nimi Komennon nimi
-     * @param lukija Lukija-tyyppiä oleva scanner-lukija
      * @param tallennetutTuotteet Tallennetut Tuotteet
+     * @param io IO-rajapinnan totetuttava olio
      * @param tallennetutListat Käyttäjän luomat tallennetut listat
      */
-    public TarkasteleListoja(int numero, String nimi, Lukija lukija, Tuotelista tallennetutTuotteet, List<Ostoslista> tallennetutListat) {
-        super(numero, nimi, lukija, tallennetutTuotteet, tallennetutListat);
+    public TarkasteleListoja(int numero, String nimi, Tuotelista tallennetutTuotteet, List<Ostoslista> tallennetutListat, IO io) {
+        super(numero, nimi, tallennetutTuotteet, tallennetutListat, io);
 
     }
 
     @Override
     public boolean suorita() {
         int riviNro = super.lukija.lueInteger("Anna tarkasteltavan listan rivinumero: ")-1;
-        tulostaTeksti("");
+        this.io.tulostaTeksti("");
         
-        tulostaTeksti(super.tallennetutListat.get(riviNro).getNimi());
-        tulostaTeksti(super.tallennetutListat.get(riviNro).toString());
-        tulostaTeksti("Kokonaishinta: " + super.tallennetutListat.get(riviNro).kokonaisHinta());
-        tulostaTeksti("");
-        tulostaTeksti("");
+        this.io.tulostaTeksti(super.tallennetutListat.get(riviNro).getNimi());
+        this.io.tulostaTeksti(super.tallennetutListat.get(riviNro).toString());
+        this.io.tulostaTeksti("Kokonaishinta: " + super.tallennetutListat.get(riviNro).kokonaisHinta());
+        this.io.tulostaTeksti("");
+        this.io.tulostaTeksti("");
         return true;
     }
 

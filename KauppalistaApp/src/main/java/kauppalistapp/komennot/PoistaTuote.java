@@ -20,12 +20,12 @@ public class PoistaTuote extends Komento {
      * PoistaTuote-olion konstruktori
      * @param numero Komennon numero
      * @param nimi  Komennon nimi
-     * @param lukija Lukija-tyyppiä oleva scanner-lukija
      * @param tallennetutTuotteet Tallennetut Tuotteet
+     * @param io IO-rajapinnan totetuttava olio
      * @param tallennetutListat Käyttäjän luomat tallennetut listat
      */
-    public PoistaTuote(int numero, String nimi, Lukija lukija, Tuotelista tallennetutTuotteet, List<Ostoslista> tallennetutListat) {
-        super(numero, nimi, lukija, tallennetutTuotteet, tallennetutListat);
+    public PoistaTuote(int numero, String nimi, Tuotelista tallennetutTuotteet, List<Ostoslista> tallennetutListat, IO io) {
+        super(numero, nimi, tallennetutTuotteet, tallennetutListat, io);
     }
     
     @Override
@@ -38,20 +38,5 @@ public class PoistaTuote extends Komento {
         super.tiedostonKirjoittaja.kirjoitaTiedostoon(lista, super.tallennetutTuotteet.getTiedosto());
         return true;
     }
-    
-    /**
-     * Leikkaa Listasta stringeja valilyonnit pois
-     * @param lista Trimattava lista
-     * @return Trimmattu lista
-     */
-    public List<String> trimmaaListaa(List<String> lista) {
-        List<String> trimmattuLista = new ArrayList<String>();
-        for (String listalla : lista) {
-            trimmattuLista.add(listalla.trim());
-        }
-        
-        return trimmattuLista;
-    }
 
-    
 }

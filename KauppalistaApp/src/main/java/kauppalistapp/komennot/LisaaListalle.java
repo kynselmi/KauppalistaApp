@@ -24,25 +24,25 @@ public class LisaaListalle extends Komento {
      *
      * @param numero Komennon numero
      * @param nimi Komennon nimi
-     * @param lukija Lukija-tyyppiä oleva scanner-lukija
      * @param tallennetutTuotteet Tallennetut Tuotteet
+     * @param io IO-rajapinnan totetuttava olio
      * @param tallennetutListat Käyttäjän luomat tallennetut listat
      */
-    public LisaaListalle(int numero, String nimi, Lukija lukija, Tuotelista tallennetutTuotteet, List<Ostoslista> tallennetutListat) {
-        super(numero, nimi, lukija, tallennetutTuotteet, tallennetutListat);
+    public LisaaListalle(int numero, String nimi, Tuotelista tallennetutTuotteet, List<Ostoslista> tallennetutListat, IO io) {
+        super(numero, nimi, tallennetutTuotteet, tallennetutListat, io);
         this.tiedostonLukija = new TiedostonLukija();
     }
 
     @Override
     public boolean suorita() {
         Ostoslista uusiLista = new Ostoslista("väliaikainen");
-        String listanNimi = this.lukija.lueTeksti("Anna listan nimi: ");
-        tulostaTeksti("");
+        String listanNimi = this.io.lueTeksti("Anna listan nimi: ");
+        this.io.tulostaTeksti("");
 
         boolean onkoListalla = false;
         for (Ostoslista ostoslista : super.tallennetutListat) {
             if (ostoslista.getNimi().equals(listanNimi)) {
-                tulostaTeksti("listalla olevat nimet ostolistat: " + ostoslista.getNimi());
+                this.io.tulostaTeksti(ostoslista.getNimi());
                 uusiLista = ostoslista;
                 onkoListalla = true;
                 break;
@@ -55,12 +55,12 @@ public class LisaaListalle extends Komento {
 
 
         while (true) {
-            tulostaTeksti("Listalla " + uusiLista.getNimi() + " on " + uusiLista.annaTuotteidenMaara() + " tuotetta:");
-            tulostaTeksti(uusiLista.toString());
-            tulostaTeksti("");
+            this.io.tulostaTeksti("Listalla " + uusiLista.getNimi() + " on " + uusiLista.annaTuotteidenMaara() + " tuotetta:");
+            this.io.tulostaTeksti(uusiLista.toString());
+            this.io.tulostaTeksti("");
 
-            tulostaTeksti("Lisättävät tuotteet:");
-            tulostaTeksti(super.tallennetutTuotteet.toString());
+            this.io.tulostaTeksti("Lisättävät tuotteet:");
+            this.io.tulostaTeksti(super.tallennetutTuotteet.toString());
 
 
             int lisattavanRivinumero = super.lukija.lueInteger("Anna lisattavan tuotteen rivinumero (kirjain lopettaa): ");                       
@@ -73,7 +73,7 @@ public class LisaaListalle extends Komento {
                 Ostos ostos = new Ostos(lisattava, 1);
                 uusiLista.lisaaOstos(ostos);
             } else {
-                tulostaTeksti("Listalla ei ole antamaasi riviä");
+                this.io.tulostaTeksti("Listalla ei ole antamaasi riviä");
             }
         }
 

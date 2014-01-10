@@ -92,9 +92,9 @@ public class OstoslistaTest {
     @Test
     public void toStringToimii() {
         this.ostoslista.lisaaOstos(this.kaksiMaitoa);
-        assertEquals(this.ostoslista.toString(), "2x   Maito 1,50e\n");
+        assertEquals(this.ostoslista.toString(), "1  2x   Maito 1,50e\n");
         
         this.ostoslista.lisaaOstos(this.kinkku);
-        assertEquals(this.ostoslista.toString(), "2x   Maito 1,50e\n     Kinkku 12,05e\n");
+        assertEquals(this.ostoslista.toString(), "1  2x   Maito 1,50e\n2       Kinkku 12,05e\n");
     }
 }

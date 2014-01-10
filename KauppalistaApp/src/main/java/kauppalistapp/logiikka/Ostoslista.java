@@ -35,7 +35,7 @@ public class Ostoslista implements Comparable<Ostoslista> {
     public void lisaaOstos(Ostos ostos) {
         boolean onkoJoListalla = false;
         for (Ostos listalla : this.ostoslista) {
-            if (listalla.getTuote().compareTo(ostos.getTuote()) == 0) {
+            if (listalla.getTuote().equals(ostos.getTuote())) {
                 listalla.lisaaMaaraa(ostos.getMaara());
                 onkoJoListalla = true;
             }
@@ -44,6 +44,35 @@ public class Ostoslista implements Comparable<Ostoslista> {
             this.ostoslista.add(ostos);
         }
     }
+    
+    /**
+     * Poistaa annetun ostoksen listalta
+     * 
+     * @param ostos poistettava ostos
+     */
+    public void poistaOstos(Ostos ostos) {
+        int rivi = -1;
+        
+        int riviNro = 0;
+        for (Ostos listalla : this.ostoslista) {
+            if (listalla.equals(ostos)) {
+                rivi = riviNro;
+            }
+            riviNro++;
+        }
+        this.ostoslista.remove(rivi);
+    }
+    
+    /**
+     * Antaa annetulta rivinumerolta Ostoksen
+     *
+     * @param riviNro annettu rivinumero
+     * @return rivinumerolla oleva ostos
+     */
+    public Ostos annaRivi(int riviNro) {        
+        return this.ostoslista.get(riviNro-1);
+    }
+            
 
     /**
      * Antaa Ostoslistasta Tuote-olioiden määrän
@@ -98,13 +127,16 @@ public class Ostoslista implements Comparable<Ostoslista> {
     @Override
     public String toString() {
         String palautettava = "";
+        int riviNro = 1;
         for (Ostos ostos : this.ostoslista) {
-            palautettava += ostos + "\n";
+            palautettava += riviNro + "  " + ostos + "\n";
+            riviNro++;
         }
         return palautettava;
     }
 
 
+  
     public String getNimi() {
         return nimi;
     }

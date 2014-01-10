@@ -20,19 +20,18 @@ public class TulostaTuotteet extends Komento {
      * TulostaTuotteet-olion konstruktori
      * @param numero Komennon numero
      * @param nimi  Komennon nimi
-     * @param lukija Lukija-tyyppiä oleva scanner-lukija
      * @param tallennetutTuotteet Tallennetut Tuotteet
      * @param tallennetutListat Käyttäjän luomat tallennetut listat
+     * @param io  IO-rajapinnan totetuttava olio
      */
-    public TulostaTuotteet(int numero, String nimi, Lukija lukija, Tuotelista tallennetutTuotteet, List<Ostoslista> tallennetutListat) {
-        super(numero, nimi, lukija, tallennetutTuotteet, tallennetutListat);
+    public TulostaTuotteet(int numero, String nimi, Tuotelista tallennetutTuotteet, List<Ostoslista> tallennetutListat, IO io) {
+        super(numero, nimi, tallennetutTuotteet, tallennetutListat, io);
     }
 
     @Override
     public boolean suorita() {
-          tulostaTeksti(super.tallennetutTuotteet.toString());
-          return true;
-        
+          this.io.tulostaTeksti(super.tallennetutTuotteet.toString());
+          return true;        
     }   
 
 }

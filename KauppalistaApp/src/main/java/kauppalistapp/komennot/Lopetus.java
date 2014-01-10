@@ -20,12 +20,12 @@ public class Lopetus extends Komento {
      *
      * @param numero Komennon numero
      * @param nimi Komennon nimi
-     * @param lukija Lukija-tyyppiä oleva scanner-lukija
      * @param tallennetutTuotteet Tallennetut Tuotteet
+     * @param io IO-rajapinnan totetuttava olio
      * @param tallennetutListat Käyttäjän luomat tallennetut listat
      */
-    public Lopetus(int numero, String nimi, Lukija lukija, Tuotelista tallennetutTuotteet, List<Ostoslista> tallennetutListat) {
-        super(numero, nimi, lukija, tallennetutTuotteet, tallennetutListat);
+    public Lopetus(int numero, String nimi, Tuotelista tallennetutTuotteet, List<Ostoslista> tallennetutListat, IO io) {
+        super(numero, nimi, tallennetutTuotteet, tallennetutListat, io);
     }
 
     @Override
