@@ -63,7 +63,7 @@ public class LisaaListalle extends Komento {
             this.io.tulostaTeksti(super.tallennetutTuotteet.toString());
 
 
-            int lisattavanRivinumero = super.lukija.lueInteger("Anna lisattavan tuotteen rivinumero (kirjain lopettaa): ");                       
+            int lisattavanRivinumero = this.io.lueInteger("Anna lisattavan tuotteen rivinumero (kirjain lopettaa): ");                       
 
             if (lisattavanRivinumero == -1) {
                 break;

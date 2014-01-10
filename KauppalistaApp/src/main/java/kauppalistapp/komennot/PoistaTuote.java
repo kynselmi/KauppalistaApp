@@ -30,7 +30,7 @@ public class PoistaTuote extends Komento {
     
     @Override
     public boolean suorita() {
-        int poistettavanRivi = super.lukija.lueInteger("Syota poistettavan tuotteen rivinumero: ");
+        int poistettavanRivi = this.io.lueInteger("Syota poistettavan tuotteen rivinumero: ");
         List<String> lista = super.tiedostonLukija.annaListanaIlmanRiviNumeroa(super.tallennetutTuotteet.getTiedosto());
         lista.remove(poistettavanRivi-1);
         super.tallennetutTuotteet.poistaTuote(poistettavanRivi);

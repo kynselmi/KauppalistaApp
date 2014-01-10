@@ -32,7 +32,7 @@ public class JarjestaTuotteita extends Komento {
         TiedostonKirjoittaja tk = new TiedostonKirjoittaja();
         this.io.tulostaTeksti("1 Aakkosjärjestykseen");
         this.io.tulostaTeksti("2 Käänteiseen aakkosjärjestykseen");
-        int komento = this.lukija.lueInteger("Anna komento: ");
+        int komento = this.io.lueInteger("Anna komento: ");
 
         if (komento == 1) {
             super.tallennetutTuotteet.jarjestaAakkosjarjestykseenNousevasti();

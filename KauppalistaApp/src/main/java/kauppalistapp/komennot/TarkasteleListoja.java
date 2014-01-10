@@ -31,7 +31,7 @@ public class TarkasteleListoja extends Komento {
 
     @Override
     public boolean suorita() {
-        int riviNro = super.lukija.lueInteger("Anna tarkasteltavan listan rivinumero: ")-1;
+        int riviNro = this.io.lueInteger("Anna tarkasteltavan listan rivinumero: ")-1;
         this.io.tulostaTeksti("");
         
         this.io.tulostaTeksti(super.tallennetutListat.get(riviNro).getNimi());

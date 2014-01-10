@@ -58,7 +58,7 @@ public class PoistaListalta extends Komento {
 
         if (onkoListalla) {
             this.io.tulostaTeksti(uusiLista.toString());
-            int poistettavanRivi = super.lukija.lueInteger("Syota poistettavan tuotteen rivinumero: ");
+            int poistettavanRivi = this.io.lueInteger("Syota poistettavan tuotteen rivinumero: ");
 
             if (poistettavanRivi >= 1) {
                 Ostos poistettava = uusiLista.annaRivi(poistettavanRivi);

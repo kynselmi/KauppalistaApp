@@ -21,10 +21,7 @@ public abstract class Komento {
 
     private int numero;
     private String nimi;
-    /**
-     * Lukija-olio, johon on kapseloitu Scanner
-     */
-    protected Lukija lukija;
+;
     /**
      * TiedostonLukija-olio, johon on kapseloitu tekstitiedostonlukija
      */
